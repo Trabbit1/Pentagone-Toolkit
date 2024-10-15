@@ -63,9 +63,16 @@ install_tools() {
     done
 }
 
+clone_link_file() {
+    cd admin-panel-finder
+    wget https://github.com/C4ssif3r/admin-panel-finder/blob/main/.link.txt
+    cd ..
+}
+
 main() {
     clone_repos
     install_tools
+    clone_link_file
 }
 
 # EXECUTE
