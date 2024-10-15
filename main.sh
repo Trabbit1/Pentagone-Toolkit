@@ -157,7 +157,7 @@ main() {
                 ;;
             7)
                 clear_screen
-                python3 Admin-Finder/admin-finder.py
+                python3 admin-panel-finder/admin-finder.py
                 pause
                 ;;
             8)
