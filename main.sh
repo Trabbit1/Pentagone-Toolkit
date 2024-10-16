@@ -72,7 +72,9 @@ display_menu() {
     echo -e " - [${CYAN}7${RESET}]. Admin Panel Finder - (${CYAN}Admin Panel Finder${RESET})"
     echo -e " - [${CYAN}8${RESET}]. Dorking Automation (${GREEN}Hetter${RESET}) - (${CYAN}Dorking & Google Search SERP${RESET})"
     echo -e " - [${CYAN}9${RESET}]. SShash (${GREEN}SSHash${RESET}) - (${CYAN}SSH/FTP Brute Forcing Tool${RESET})"
-    echo -e " - [${CYAN}10${RESET}]. Http Params Finder (${GREEN}Paramspider${RESET}) - (${CYAN}Http Parameter Scanner${RESET})"
+    echo -e " - [${CYAN}10${RESET}]. Http Parameter Finder (${GREEN}Paramspider${RESET}) - (${CYAN}Http Parameter Scan${RESET}) [1]"
+    echo -e " - [${CYAN}11${RESET}]. Http Parameter Finder (${GREEN}Arjun${RESET}) - (${CYAN}Http Parameter Scan${RESET}) [2]"
+    echo -e " - [${CYAN}12${RESET}]. Original Server IP Finder (${GREEN}Cloudflare-Origin-IP${RESET}) - (${CYAN}Original Server IP Finder${RESET})"
     echo -e " - [${CYAN}Q${RESET}]. QUIT (${GREEN}Quit the software${RESET})"
     echo
 }
@@ -87,8 +89,9 @@ main() {
     version="1.6"
 
     while true; do
-        prompt="${BLUE}[${GREEN} V${version} ${BLUE}] - (${RED} Select A Tool ${BLUE})
-  [${YELLOW} Pentagone ${BLUE}]${RED}~${GREEN}# ${RESET}"
+        prompt="${BLUE}╭─[${GREEN} V${version} ${BLUE}] ─ (${RED} Select A Tool ${BLUE})
+╰─${YELLOW}# ${RESET}"
+# ${BLUE}${RED}~${GREEN}# ${RESET}"
 
         display_menu
         echo -ne "$prompt"
@@ -180,6 +183,7 @@ main() {
                 ;;
             10)
                 read -rp "Domain: " domain
+                clear_screen
                 paramspider -d "$domain"
                 read -rp "Display Results (y/n)?: " display_output
                 if [[ "$display_output" == "y" ]]; then
@@ -188,9 +192,21 @@ main() {
                 fi
                 pause
                 ;;
+            11)
+                read -rp "Url: " url
+                clear_screen
+                arjun -u $url -q
+                pause
+                ;;
+            12)
+                read -rp "Url: " url
+                clear_screen
+                python3 cloudflare-origin-ip/cloudflare-origin-ip.py -u $url
+                pause
+                ;;
             [Qq])
                 clear_screen
-                echo "Exiting..."
+                echo -e "${BG_BLUE}THANKS FOR USING PENTAGONE TOOLKIT${RESET}"
                 exit 0
                 ;;
             *)
