@@ -1,7 +1,7 @@
 #!/bin/bash
 
 ##########################################################################
-# WARNING: This Tool Is Made For Pentesters And Ethical Purposes       #
+# WARNING: This Tool Is Made For Pentesters And Ethical Purposes         #
 ##########################################################################
 
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -42,25 +42,26 @@ clear_screen() {
 
 # Define the YouTube banner command
 youtube_banner='echo -e " [ \e]8;;https://www.youtube.com/@trabbitone\a\033[41m ⯈  \033[0m YouTube \e]8;;\a ] "'
+rumble_banner='" [ \e]8;;https://rumble.com/TrabbitOne\a   Rumble   \e]8;;\a ] "'
 
 # Execute the YouTube banner command and capture output
-youtube_output=$(eval "$youtube_banner")
+banner_output=$(eval "$youtube_banner" "//" "$rumble_banner")
 
 # Function to display the menu
 display_menu() {
     clear_screen
-    echo -e "${BLUE}                             dP                                        "
-    echo "                             88                                                "
-    echo "88d888b. .d8888b. 88d888b. d8888P .d8888b. .d8888b. .d8888b. 88d888b. .d8888b. "
-    echo "88'  '88 88ooood8 88'  '88   88   88'  '88 88'  '88 88'  '88 88'  '88 88ooood8 "
-    echo "88.  .88 88.  ... 88    88   88   88.  .88 88.  .88 88.  .88 88    88 88.  ... "
-    echo "88Y888P' '88888P' dP    dP   dP   '88888P8 '8888P88 '88888P' dP    dP '88888P' "
-    echo "88                                              .88                            "
-    echo -e "${BLUE}dP                                          d8888P                     ${RESET}"
+    echo -e "${BLUE}"
+    echo "██████╗ ███████╗███╗   ██╗████████╗ █████╗  ██████╗  ██████╗ ███╗   ██╗███████╗";
+    echo "██╔══██╗██╔════╝████╗  ██║╚══██╔══╝██╔══██╗██╔════╝ ██╔═══██╗████╗  ██║██╔════╝";
+    echo "██████╔╝█████╗  ██╔██╗ ██║   ██║   ███████║██║  ███╗██║   ██║██╔██╗ ██║█████╗  ";
+    echo "██╔═══╝ ██╔══╝  ██║╚██╗██║   ██║   ██╔══██║██║   ██║██║   ██║██║╚██╗██║██╔══╝  ";
+    echo "██║     ███████╗██║ ╚████║   ██║   ██║  ██║╚██████╔╝╚██████╔╝██║ ╚████║███████╗";
+    echo "╚═╝     ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝";
+    echo -e "${RESET}"
     echo -e "                                                  ${MAGENTA}Created By ${BG_PURPLE}${WHITE} Pentagone Group ${RESET}"
     echo "_______________________________________________________________________________"
     echo
-    echo -e "$youtube_output"
+    echo -e "$banner_output"
     echo "_______________________________________________________________________________"
     echo
     echo -e " - [${CYAN}1${RESET}]. Subdomain Scan (${GREEN}SubFinder${RESET}) - (${CYAN}Subdomain Enumeration Tool${RESET})"
