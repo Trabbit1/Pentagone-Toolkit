@@ -11,20 +11,25 @@
 ###########################
 
 # VARIABLES
+fuzzing_wordlist_url="https://raw.githubusercontent.com/six2dez/OneListForAll/refs/heads/main/onelistforallmicro.txt"
+# GITHUB REPOS LIST
 REPOS=(
     "https://github.com/Trabbit0ne/SSHash"
     "https://github.com/TrabbitOne/hetter"
     "https://github.com/TrabbitOne/XSStrike"
     "https://github.com/C4ssif3r/admin-panel-finder"
+    "https://github.com/gwen001/cloudflare-origin-ip"
 )
 
+# PIP3 LIST
 TOOLS=(
     "subfinder"
     "wpscan"
     "sqlmap"
-    "paramspider"
+    "arjun"
 )
 
+# APT LIST
 APT_TOOLS=(
     "ffuf"
     "nmap"
@@ -32,6 +37,7 @@ APT_TOOLS=(
 
 # FUNCTIONS
 
+# function to clone Github repos
 clone_repos() {
     for repo in "${REPOS[@]}"; do
         repo_name=$(basename "$repo" .git)
@@ -43,7 +49,10 @@ clone_repos() {
     done
 }
 
+# function to install pip tools
 install_tools() {
+    wget $fuzzing_wordlist_url
+    pip3 install -r cloudflare-origin-ip/requirements.txt
     for tool in "${TOOLS[@]}"; do
         if pip3 show "$tool" > /dev/null 2>&1; then
             echo "Python tool $tool is already installed, skipping..."
@@ -63,6 +72,7 @@ install_tools() {
     done
 }
 
+# main function of the script
 main() {
     clone_repos
     install_tools
