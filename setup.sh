@@ -12,6 +12,7 @@
 
 # VARIABLES
 fuzzing_wordlist_url="https://raw.githubusercontent.com/six2dez/OneListForAll/refs/heads/main/onelistforallmicro.txt"
+
 # GITHUB REPOS LIST
 REPOS=(
     "https://github.com/Trabbit0ne/SSHash"
