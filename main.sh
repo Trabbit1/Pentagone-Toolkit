@@ -26,11 +26,13 @@ BLUE='\e[0;34m'
 MAGENTA='\e[0;35m'
 CYAN='\e[0;36m'
 WHITE='\e[1;37m'
-BG_RED="\e[41m"
+BLACK='\e[30m'
+BG_RED="\e[1;41m"
 BG_GREEN="\e[42m"
 BG_YELLOW="\e[43m"
-BG_BLUE="\e[44m"
+BG_BLUE="\e[1;44m"
 BG_PURPLE="\e[45m"
+BG_WHITE='\e[47m'
 RESET='\e[0m'
 BOLD='\e[1m'
 UNDERLINE='\e[4m'
@@ -41,11 +43,12 @@ clear_screen() {
 }
 
 # Define the YouTube banner command
-youtube_banner='echo -e " [ \e]8;;https://www.youtube.com/@trabbitone\a\033[41m ⯈  \033[0m YouTube \e]8;;\a ] "'
-rumble_banner='" [ \e]8;;https://rumble.com/TrabbitOne\a   Rumble   \e]8;;\a ] "'
+youtube_banner='echo -e " [ \e]8;;https://www.youtube.com/@trabbitone\a${BG_RED}${WHITE} You${RED}${BG_WHITE}Tube ${RESET}\e]8;;\a ] "'
+rumble_banner='" [ \e]8;;https://rumble.com/TrabbitOne\a${BG_GREEN}${WHITE} Rumble ${RESET}\e]8;;\a ] "'
+github_banner='" [ \e]8;;https://github.com/Trabbit0ne\a${BG_WHITE}${BLACK} GitHub ${RESET}\e]8;;\a ] "'
 
 # Execute the YouTube banner command and capture output
-banner_output=$(eval "$youtube_banner" "//" "$rumble_banner")
+banner_output=$(eval "$youtube_banner" "//" "$rumble_banner" "//" "$github_banner")
 
 # Function to display the menu
 display_menu() {
@@ -64,19 +67,19 @@ display_menu() {
     echo -e "$banner_output"
     echo "_______________________________________________________________________________"
     echo
-    echo -e " - [${CYAN}1${RESET}]. Subdomain Scan (${GREEN}SubFinder${RESET}) - (${CYAN}Subdomain Enumeration Tool${RESET})"
-    echo -e " - [${CYAN}2${RESET}]. Directory Fuzzing (${GREEN}FFuf${RESET}) - (${CYAN}Directory Fuzzing & Enumeration${RESET})"
-    echo -e " - [${CYAN}3${RESET}]. Network Mapping (${GREEN}Nmap${RESET}) - (${CYAN}Network Mapping Tool${RESET})"
-    echo -e " - [${CYAN}4${RESET}]. XSS Scan (${GREEN}XSStrike${RESET}) - (${CYAN}Cross Site Scripting vulnerability Scanner${RESET})"
-    echo -e " - [${CYAN}5${RESET}]. SQLi Scan (${GREEN}Sqlmap${RESET}) - (${CYAN}SQL Injection Vulnerability Scanner${RESET})"
-    echo -e " - [${CYAN}6${RESET}]. Wordpress Tools (${GREEN}wpscan${RESET}) - (${CYAN}Wordpress Multi-Usage Scanner${RESET})"
-    echo -e " - [${CYAN}7${RESET}]. Admin Panel Finder - (${GREEN}Admin Panel Finder${RESET}) - (${CYAN}Find Admin Panel Of Web Servers${RESET})"
-    echo -e " - [${CYAN}8${RESET}]. Web Scrapping Automation (${GREEN}Hetter${RESET}) - (${CYAN}Dorking & Google Search SERP/Links Scraper${RESET})"
-    echo -e " - [${CYAN}9${RESET}]. SShash (${GREEN}SSHash${RESET}) - (${CYAN}SSH/FTP Brute Forcing Tool${RESET})"
-    echo -e " - [${CYAN}10${RESET}]. Http Parameter Finder [${YELLOW}1${RESET}] (${GREEN}Paramspider${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
-    echo -e " - [${CYAN}11${RESET}]. Http Parameter Finder [${YELLOW}2${RESET}] (${GREEN}Arjun${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
-    echo -e " - [${CYAN}12${RESET}]. Original Server IP Finder (${GREEN}Cloudflare-Origin-IP${RESET}) - (${CYAN}Original Server IP Finder${RESET})"
-    echo -e " - [${CYAN}Q${RESET}]. QUIT (${CYAN}Quit the software${RESET})"
+    echo -e " - [${CYAN}1${RESET}]. ${WHITE}Subdomain Scan (${GREEN}SubFinder${RESET}) - (${CYAN}Subdomain Enumeration Tool${RESET})"
+    echo -e " - [${CYAN}2${RESET}]. ${WHITE}Directory Fuzzing (${GREEN}FFuf${RESET}) - (${CYAN}Directory Fuzzing & Enumeration${RESET})"
+    echo -e " - [${CYAN}3${RESET}]. ${WHITE}Network Mapping (${GREEN}Nmap${RESET}) - (${CYAN}Network Mapping Tool${RESET})"
+    echo -e " - [${CYAN}4${RESET}]. ${WHITE}XSS Scan (${GREEN}XSStrike${RESET}) - (${CYAN}Cross Site Scripting vulnerability Scanner${RESET})"
+    echo -e " - [${CYAN}5${RESET}]. ${WHITE}SQLi Scan (${GREEN}Sqlmap${RESET}) - (${CYAN}SQL Injection Vulnerability Scanner${RESET})"
+    echo -e " - [${CYAN}6${RESET}]. ${WHITE}Wordpress Tools (${GREEN}wpscan${RESET}) - (${CYAN}Wordpress Multi-Usage Scanner${RESET})"
+    echo -e " - [${CYAN}7${RESET}]. ${WHITE}Admin Panel Finder - (${GREEN}Admin Panel Finder${RESET}) - (${CYAN}Find Admin Panel Of Web Servers${RESET})"
+    echo -e " - [${CYAN}8${RESET}]. ${WHITE}Web Scrapping Automation (${GREEN}Hetter${RESET}) - (${CYAN}Dorking & Google Search SERP/Links Scraper${RESET})"
+    echo -e " - [${CYAN}9${RESET}]. ${WHITE}SShash (${GREEN}SSHash${RESET}) - (${CYAN}SSH/FTP Brute Forcing Tool${RESET})"
+    echo -e " - [${CYAN}10${RESET}]. ${WHITE}Http Parameter Finder [${YELLOW}1${RESET}] (${GREEN}Paramspider${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
+    echo -e " - [${CYAN}11${RESET}]. ${WHITE}Http Parameter Finder [${YELLOW}2${RESET}] (${GREEN}Arjun${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
+    echo -e " - [${CYAN}12${RESET}]. ${WHITE}Original Server IP Finder (${GREEN}Cloudflare-Origin-IP${RESET}) - (${CYAN}Original Server IP Finder${RESET})"
+    echo -e " - [${CYAN}Q${RESET}]. ${WHITE}QUIT (${CYAN}Quit the software${RESET})"
     echo
 }
 
