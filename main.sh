@@ -18,6 +18,10 @@
 # ----------------------------------------
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+# Variables
+version="1.7"
+author="Trabbit"
+
 # Define color codes
 RED='\e[0;31m'
 GREEN='\e[0;32m'
@@ -33,6 +37,7 @@ BG_YELLOW="\e[43m"
 BG_BLUE="\e[1;44m"
 BG_PURPLE="\e[45m"
 BG_WHITE='\e[47m'
+BG_CYAN="\e[0;46m"
 RESET='\e[0m'
 BOLD='\e[1m'
 UNDERLINE='\e[4m'
@@ -41,6 +46,15 @@ UNDERLINE='\e[4m'
 clear_screen() {
     clear
 }
+
+cleanup() {
+    clear
+    echo -e "${BG_CYAN}${BLACK}THANKS FOR USING PENTAGONE TOOLKIT FOR PENTESTERS!${RESET}"
+    exit 1
+}
+
+# Set up the trap to catch SIGINT (Ctrl+C)
+trap cleanup SIGINT
 
 # Define the YouTube banner command
 youtube_banner='echo -e " [ \e]8;;https://www.youtube.com/@trabbitone\a${BG_RED}${WHITE} You${RED}${BG_WHITE}Tube ${RESET}\e]8;;\a ] "'
@@ -79,6 +93,7 @@ display_menu() {
     echo -e " - [${CYAN}10${RESET}]. ${WHITE}Http Parameter Finder [${YELLOW}1${RESET}] (${GREEN}Paramspider${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
     echo -e " - [${CYAN}11${RESET}]. ${WHITE}Http Parameter Finder [${YELLOW}2${RESET}] (${GREEN}Arjun${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
     echo -e " - [${CYAN}12${RESET}]. ${WHITE}Original Server IP Finder (${GREEN}Cloudflare-Origin-IP${RESET}) - (${CYAN}Original Server IP Finder${RESET})"
+    echo -e " - [${CYAN}13${RESET}]. ${WHITE}Loctrac IP Tracker (${GREEN}Loctrac${RESET}) - (${CYAN}IP Address Location Tracker${RESET})"
     echo -e " - [${CYAN}Q${RESET}]. ${WHITE}QUIT (${CYAN}Quit the software${RESET})"
     echo
 }
@@ -90,7 +105,6 @@ pause() {
 
 # Main function
 main() {
-    version="1.6"
 
     while true; do
         prompt="${BLUE}╭─[${GREEN} V${version} ${BLUE}] ─ (${RED} Select A Tool ${BLUE})
@@ -208,9 +222,15 @@ main() {
                 python3 cloudflare-origin-ip/cloudflare-origin-ip.py -u $url
                 pause
                 ;;
+            13)
+                read -rp "[-m/IP]: " argument
+                clear_screen
+                bash loctrac_textonly/main.sh $argument
+                pause
+                ;;
             [Qq])
                 clear_screen
-                echo -e "${BG_BLUE}THANKS FOR USING PENTAGONE TOOLKIT${RESET}"
+                echo -e "${BG_CYAN}${BLACK}THANKS FOR USING PENTAGONE TOOLKIT FOR PENTESTERS!${RESET}"
                 exit 0
                 ;;
             *)
