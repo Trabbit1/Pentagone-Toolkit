@@ -5,20 +5,33 @@ Multi-Usage Pentesting Toolkit Written In Bash.
 ![image](https://github.com/user-attachments/assets/cc51b040-efa1-41f3-994c-29bcf5545bad)
 
 ## Tools
-``
+
 Subfinder
+
 Ffuf
+
 Nmap
+
 XSStrike
+
 SQLmap
+
 WPscan
+
 Admin Panel Finder
+
 Hetter
+
 SSHash
+
 Paramspider
+
 Arjun
+
 Cloudflare-Origin-IP
+
 Loctrac
+
 ``
 
 ## Installation
