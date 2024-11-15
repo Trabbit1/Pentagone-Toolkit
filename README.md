@@ -10,26 +10,15 @@ Subfinder
 Ffuf
 Nmap
 XSStrike
-
 SQLmap
-
 WPscan
-
 Admin Panel Finder
-
 Hetter
-
 SSHash
-
 Paramspider
-
 Arjun
-
 Cloudflare-Origin-IP
-
 Loctrac
-
-``
 
 ## Installation
 
