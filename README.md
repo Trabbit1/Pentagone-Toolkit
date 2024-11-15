@@ -7,11 +7,8 @@ Multi-Usage Pentesting Toolkit Written In Bash.
 ## Tools
 
 Subfinder
-
 Ffuf
-
 Nmap
-
 XSStrike
 
 SQLmap
