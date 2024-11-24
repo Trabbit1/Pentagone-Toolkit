@@ -78,6 +78,7 @@ install_tools() {
             apt install -y "$apt_tool" || { echo "Failed to install $apt_tool"; exit 1; }
         fi
     done
+    cp admin-panel-finder/.link.txt ../.link.txt
 }
 
 # main function of the script
