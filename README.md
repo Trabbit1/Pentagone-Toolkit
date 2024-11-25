@@ -18,7 +18,7 @@ SSHash,
 Paramspider,
 Arjun,
 Cloudflare-Origin-IP,
-Loctrac
+Loctrac,
 GRS
 
 ## Installation
