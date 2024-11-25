@@ -60,13 +60,13 @@ install_tools() {
         wget $fuzzing_wordlist_url || { echo "Failed to download $fuzzing_wordlist_url"; exit 1; }
     fi
 
-    pip3 install -r cloudflare-origin-ip/requirements.txt || { echo "Failed to install requirements from cloudflare-origin-ip"; exit 1; }
+    pip3 install -r cloudflare-origin-ip/requirements.txt > /dev/null 2>&1 || { echo "Failed to install requirements from cloudflare-origin-ip"; exit 1; }
 
     for tool in "${TOOLS[@]}"; do
         if pip3 show "$tool" > /dev/null 2>&1; then
             echo "Python tool $tool is already installed, skipping..."
         else
-            pip3 install "$tool" || { echo "Failed to install $tool"; exit 1; }
+            pip3 install "$tool" > /dev/null 2>&1 || { echo "Failed to install $tool"; exit 1; }
         fi
     done
 
