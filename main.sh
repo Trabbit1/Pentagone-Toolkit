@@ -94,6 +94,7 @@ display_menu() {
     echo -e " - [${CYAN}11${RESET}]. ${WHITE}Http Parameter Finder [${YELLOW}2${RESET}] (${GREEN}Arjun${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
     echo -e " - [${CYAN}12${RESET}]. ${WHITE}Original Server IP Finder (${GREEN}Cloudflare-Origin-IP${RESET}) - (${CYAN}Original Server IP Finder${RESET})"
     echo -e " - [${CYAN}13${RESET}]. ${WHITE}Loctrac IP Tracker (${GREEN}Loctrac${RESET}) - (${CYAN}IP Address Location Tracker${RESET})"
+    echo -e " - [${CYAN}14${RESET}]. ${WHITE}GRS - (${GREEN}Google Results Scraper${RESET}) - (${CYAN}Google search results links serper/scraper${RESET})"
     echo -e " - [${CYAN}Q${RESET}]. ${WHITE}QUIT (${CYAN}Quit the software${RESET})"
     echo
 }
@@ -228,6 +229,21 @@ main() {
                 bash loctrac_textonly/main.sh $argument
                 pause
                 ;;
+            14)
+                read -rp "Query: " query
+                read -rp "Page(s) [1-5|1,5|5]: " pages
+                read -rp "Link Only/extract link (Y/N): " link_only
+                if [[ $link_only == "y" ]] || [[ $link_only == "Y" ]]; then
+                    read -p "Output: " output
+                    clear_screen
+                    python3 grs/grs.py -q "$query" -p $pages | grep -oP 'https?://\S+' > $output
+                else
+                    clear_screen
+                    python3 grs/grs.py -q "$query" -p $pages
+                fi
+                pause
+                ;;
+
             [Qq])
                 clear_screen
                 echo -e "${BG_CYAN}${BLACK}THANKS FOR USING PENTAGONE TOOLKIT FOR PENTESTERS!${RESET}"
