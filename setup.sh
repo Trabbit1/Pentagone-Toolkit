@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 ###########################
 #            __           #
@@ -60,7 +60,8 @@ install_tools() {
         wget $fuzzing_wordlist_url || { echo "Failed to download $fuzzing_wordlist_url"; exit 1; }
     fi
 
-    pip3 install -r cloudflare-origin-ip/requirements.txt
+    pip3 install -r cloudflare-origin-ip/requirements.txt || { echo "Failed to install requirements from cloudflare-origin-ip"; exit 1; }
+
     for tool in "${TOOLS[@]}"; do
         if pip3 show "$tool" > /dev/null 2>&1; then
             echo "Python tool $tool is already installed, skipping..."
@@ -83,8 +84,8 @@ install_tools() {
 # main function of the script
 main() {
     clone_repos
+    cp admin-panel-finder/.link.txt . || { echo "Failed to copy .link.txt"; exit 1; }
     install_tools
-    cp admin-panel-finder/.link.txt ../.link.txt
 }
 
 # EXECUTE
