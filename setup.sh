@@ -90,7 +90,7 @@ main() {
     install_tools
 
     # Download and set up subfinder
-    wget -s "https://github.com/projectdiscovery/subfinder/releases/download/v2.6.7/subfinder_2.6.7_linux_amd64.zip"
+    wget "https://github.com/projectdiscovery/subfinder/releases/download/v2.6.7/subfinder_2.6.7_linux_amd64.zip"
     unzip subfinder_2.6.7_linux_amd64.zip
     cp subfinder "$(dirname "$(command -v bash)")/subfinder" || { echo "Failed to move subfinder"; exit 1; }
     chmod +x "$(dirname "$(command -v bash)")/subfinder" || { echo "Failed to set executable permission on subfinder"; exit 1; }
