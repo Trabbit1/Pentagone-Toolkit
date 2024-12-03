@@ -14,7 +14,7 @@
 fuzzing_wordlist_url="https://raw.githubusercontent.com/six2dez/OneListForAll/refs/heads/main/onelistforallmicro.txt"
 fuzzing_wordlist_file="onelistforallmicro.txt"
 
-# GITHUB REPOS LIST
+# GITHUB REPOSITORIES TO CLONE
 REPOS=(
     "https://github.com/Trabbit0ne/SSHash"
     "https://github.com/TrabbitOne/hetter"
@@ -25,15 +25,14 @@ REPOS=(
     "https://github.com/Trabbit0ne/loctrac_textonly"
 )
 
-# PIP3 LIST
+# PIP3 TOOLS TO INSTALL
 TOOLS=(
-    "subfinder"
     "wpscan"
     "sqlmap"
     "arjun"
 )
 
-# APT LIST
+# APT TOOLS TO INSTALL
 APT_TOOLS=(
     "ffuf"
     "nmap"
@@ -41,7 +40,7 @@ APT_TOOLS=(
 
 # FUNCTIONS
 
-# function to clone Github repos
+# Clone GitHub repositories
 clone_repos() {
     for repo in "${REPOS[@]}"; do
         repo_name=$(basename "$repo" .git)
@@ -53,40 +52,48 @@ clone_repos() {
     done
 }
 
-# function to install pip tools
+# Install pip tools and download fuzzing wordlist
 install_tools() {
-    if [ -f "$fuzzing_wordlist_file" ]; then
-        echo "Wordlist $fuzzing_wordlist_file already exists, skipping..."
+    if [ ! -f "$fuzzing_wordlist_file" ]; then
+        wget "$fuzzing_wordlist_url" || { echo "Failed to download $fuzzing_wordlist_url"; exit 1; }
     else
-        wget $fuzzing_wordlist_url || { echo "Failed to download $fuzzing_wordlist_url"; exit 1; }
+        echo "Wordlist $fuzzing_wordlist_file already exists, skipping..."
     fi
 
+    # Install requirements for cloudflare-origin-ip
     pip3 install -r cloudflare-origin-ip/requirements.txt > /dev/null 2>&1 || { echo "Failed to install requirements from cloudflare-origin-ip"; exit 1; }
 
+    # Install Python tools
     for tool in "${TOOLS[@]}"; do
         if pip3 show "$tool" > /dev/null 2>&1; then
             echo "Python tool $tool is already installed, skipping..."
         else
-            pip3 install "$tool" > /dev/null 2>&1 || { echo "Failed to install $tool"; exit 1; }
+            pip3 install "$tool" > /dev/null 2>&1 || { echo "Failed to install $tool"; }
         fi
     done
 
+    # Update package list and install APT tools
     apt update || { echo "Failed to update package list"; exit 1; }
-
     for apt_tool in "${APT_TOOLS[@]}"; do
         if dpkg -l | grep -q "$apt_tool"; then
             echo "System tool $apt_tool is already installed, skipping..."
         else
-            apt install -y "$apt_tool" || { echo "Failed to install $apt_tool"; exit 1; }
+            apt install -y "$apt_tool" || { echo "Failed to install $apt_tool"; }
         fi
     done
 }
 
-# main function of the script
+# Main execution function
 main() {
     clone_repos
     cp admin-panel-finder/.link.txt . || { echo "Failed to copy .link.txt"; exit 1; }
     install_tools
+
+    # Download and set up subfinder
+    wget -s "https://github.com/projectdiscovery/subfinder/releases/download/v2.6.7/subfinder_2.6.7_linux_amd64.zip"
+    unzip subfinder_2.6.7_linux_amd64.zip
+    cp subfinder "$(dirname "$(command -v bash)")/subfinder" || { echo "Failed to move subfinder"; exit 1; }
+    chmod +x "$(dirname "$(command -v bash)")/subfinder" || { echo "Failed to set executable permission on subfinder"; exit 1; }
 }
 
 # EXECUTE
