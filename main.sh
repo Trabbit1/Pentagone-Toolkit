@@ -92,7 +92,7 @@ display_menu() {
     echo -e " - [${CYAN}9${RESET}]. ${WHITE}SShash (${GREEN}SSHash${RESET}) - (${CYAN}SSH/FTP Brute Forcing Tool${RESET})"
     echo -e " - [${CYAN}10${RESET}]. ${WHITE}Http Parameter Finder [${YELLOW}1${RESET}] (${GREEN}Paramspider${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
     echo -e " - [${CYAN}11${RESET}]. ${WHITE}Http Parameter Finder [${YELLOW}2${RESET}] (${GREEN}Arjun${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
-    echo -e " - [${CYAN}12${RESET}]. ${WHITE}Original Server IP Finder (${GREEN}Cloudflare-Origin-IP${RESET}) - (${CYAN}Original Server IP Finder${RESET})"
+    echo -e " - [${CYAN}12${RESET}]. ${WHITE}Original Server IP Finder (${GREEN}IPF${RESET}) - (${CYAN}IPF - Original Server IP Finder${RESET})"
     echo -e " - [${CYAN}13${RESET}]. ${WHITE}Loctrac IP Tracker (${GREEN}Loctrac${RESET}) - (${CYAN}IP Address Location Tracker${RESET})"
     echo -e " - [${CYAN}14${RESET}]. ${WHITE}GRS - (${GREEN}Google Results Scraper${RESET}) - (${CYAN}Google search results links serper/scraper${RESET})"
     echo -e " - [${CYAN}Q${RESET}]. ${WHITE}QUIT (${CYAN}Quit the software${RESET})"
@@ -218,9 +218,9 @@ main() {
                 pause
                 ;;
             12)
-                read -rp "Url: " url
+                read -rp "Domain: " domain
                 clear_screen
-                python3 cloudflare-origin-ip/cloudflare-origin-ip.py -u $url
+                bash IPF/main.sh -d $domain
                 pause
                 ;;
             13)
