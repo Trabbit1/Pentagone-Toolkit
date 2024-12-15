@@ -21,8 +21,8 @@ REPOS=(
     "https://github.com/TrabbitOne/XSStrike"
     "https://github.com/Trabbit0ne/grs"
     "https://github.com/C4ssif3r/admin-panel-finder"
-    "https://github.com/gwen001/cloudflare-origin-ip"
     "https://github.com/Trabbit0ne/loctrac_textonly"
+    "https://github.com/Trabbit0ne/IPF"
 )
 
 # PIP3 TOOLS TO INSTALL
