@@ -86,7 +86,7 @@ display_menu() {
     echo -e " - [${CYAN}3${RESET}]. ${WHITE}Nmap (${GREEN}Nmap${RESET}) - (${CYAN}Network Mapping Tool${RESET})"
     echo -e " - [${CYAN}4${RESET}]. ${WHITE}XSStrike (${GREEN}XSStrike${RESET}) - (${CYAN}Cross Site Scripting vulnerability Scanner${RESET})"
     echo -e " - [${CYAN}5${RESET}]. ${WHITE}SQLmap (${GREEN}Sqlmap${RESET}) - (${CYAN}SQL Injection Vulnerability Scanner${RESET})"
-    echo -e " - [${CYAN}6${RESET}]. ${WHITE}WPscan (${GREEN}wpscan${RESET}) - (${CYAN}Wordpress Multi-Usage Scanner${RESET})"
+    echo -e " - [${CYAN}6${RESET}]. ${WHITE}WPenum (${GREEN}Wp Enumerator${RESET}) - (${CYAN}Wordpress Users Enumerator${RESET})"
     echo -e " - [${CYAN}7${RESET}]. ${WHITE}Admin Panel Finder - (${GREEN}Admin Panel Finder${RESET}) - (${CYAN}Find Admin Panel Of Web Servers${RESET})"
     echo -e " - [${CYAN}8${RESET}]. ${WHITE}Hetter (${GREEN}Hetter${RESET}) - (${CYAN}Dorking & Google Search SERP/Links Scraper${RESET})"
     echo -e " - [${CYAN}9${RESET}]. ${WHITE}SShash (${GREEN}SSHash${RESET}) - (${CYAN}SSH/FTP Brute Forcing Tool${RESET})"
