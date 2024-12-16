@@ -72,7 +72,7 @@ install_tools() {
     # Update package list and install APT tools
     apt update || { echo "Failed to update package list"; exit 1; }
     for apt_tool in "${APT_TOOLS[@]}"; do
-        if dpkg -l | grep -q "$apt_tool"; then
+        if apt -l | grep -q "$apt_tool"; then
             echo "System tool $apt_tool is already installed, skipping..."
         else
             apt install -y "$apt_tool" || { echo "Failed to install $apt_tool"; }
