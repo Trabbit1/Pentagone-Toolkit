@@ -160,21 +160,8 @@ main() {
                 ;;
             6)
                 read -rp "URL: " url
-                echo "Enumeration Types:"
-                echo "- [u] (users)"
-                echo "- [m] (medias)"
-                echo "- [vp] (vulnerable plugins)"
-                echo "- [vt] (vulnerable themes)"
-                echo "- [p] (popular plugins)"
-                echo "- [at] (all themes)"
-                echo "- [cb] (config backups)"
-                echo "- [dbe] (DB exports)"
-                echo "- [tt] (Timthumbs)"
-                echo "- [ap] (all plugins)"
-                echo
-                read -rp "Enumeration Type: " enum_type
                 clear_screen
-                wpscan --url "$url" --enumerate "$enum_type" --random-user-agent --ignore-main-redirect
+                bash WPenum/main.sh $url
                 pause
                 ;;
             7)
