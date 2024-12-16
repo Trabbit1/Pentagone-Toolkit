@@ -60,9 +60,6 @@ install_tools() {
         echo "Wordlist $fuzzing_wordlist_file already exists, skipping..."
     fi
 
-    # Install requirements for cloudflare-origin-ip
-    pip3 install -r cloudflare-origin-ip/requirements.txt > /dev/null 2>&1 || { echo "Failed to install requirements from cloudflare-origin-ip"; exit 1; }
-
     # Install Python tools
     for tool in "${TOOLS[@]}"; do
         if pip3 show "$tool" > /dev/null 2>&1; then
