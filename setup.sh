@@ -17,7 +17,6 @@ fuzzing_wordlist_file="onelistforallmicro.txt"
 # GITHUB REPOSITORIES TO CLONE
 REPOS=(
     "https://github.com/Trabbit0ne/SSHash"
-    "https://github.com/TrabbitOne/hetter"
     "https://github.com/TrabbitOne/XSStrike"
     "https://github.com/Trabbit0ne/grs"
     "https://github.com/C4ssif3r/admin-panel-finder"
