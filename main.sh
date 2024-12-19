@@ -88,13 +88,12 @@ display_menu() {
     echo -e " - [${CYAN}5${RESET}]. ${WHITE}SQLmap (${GREEN}Sqlmap${RESET}) - (${CYAN}SQL Injection Vulnerability Scanner${RESET})"
     echo -e " - [${CYAN}6${RESET}]. ${WHITE}WPenum (${GREEN}Wp Enumerator${RESET}) - (${CYAN}Wordpress Users Enumerator${RESET})"
     echo -e " - [${CYAN}7${RESET}]. ${WHITE}Admin Panel Finder - (${GREEN}Admin Panel Finder${RESET}) - (${CYAN}Find Admin Panel Of Web Servers${RESET})"
-    echo -e " - [${CYAN}8${RESET}]. ${WHITE}Hetter (${GREEN}Hetter${RESET}) - (${CYAN}Dorking & Google Search SERP/Links Scraper${RESET})"
-    echo -e " - [${CYAN}9${RESET}]. ${WHITE}SShash (${GREEN}SSHash${RESET}) - (${CYAN}SSH/FTP Brute Forcing Tool${RESET})"
-    echo -e " - [${CYAN}10${RESET}]. ${WHITE}Paramspider [${YELLOW}1${RESET}] (${GREEN}Paramspider${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
-    echo -e " - [${CYAN}11${RESET}]. ${WHITE}Arjun [${YELLOW}2${RESET}] (${GREEN}Arjun${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
-    echo -e " - [${CYAN}12${RESET}]. ${WHITE}IPF (${GREEN}IPF${RESET}) - (${CYAN}IPF - Original Server IP Finder${RESET})"
-    echo -e " - [${CYAN}13${RESET}]. ${WHITE}Loctrac (${GREEN}Loctrac${RESET}) - (${CYAN}IP Address Location Tracker${RESET})"
-    echo -e " - [${CYAN}14${RESET}]. ${WHITE}GRS - (${GREEN}Google Results Scraper${RESET}) - (${CYAN}Google search results links serper/scraper${RESET})"
+    echo -e " - [${CYAN}8${RESET}]. ${WHITE}SShash (${GREEN}SSHash${RESET}) - (${CYAN}SSH/FTP Brute Forcing Tool${RESET})"
+    echo -e " - [${CYAN}9${RESET}]. ${WHITE}Paramspider (${GREEN}Paramspider${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
+    echo -e " - [${CYAN}10${RESET}]. ${WHITE}Arjun (${GREEN}Arjun${RESET}) - (${CYAN}Http Parameter Scan${RESET})"
+    echo -e " - [${CYAN}11${RESET}]. ${WHITE}IPF (${GREEN}IPF${RESET}) - (${CYAN}IPF - Original Server IP Finder${RESET})"
+    echo -e " - [${CYAN}12${RESET}]. ${WHITE}Loctrac (${GREEN}Loctrac${RESET}) - (${CYAN}IP Address Location Tracker${RESET})"
+    echo -e " - [${CYAN}13${RESET}]. ${WHITE}GRS - (${GREEN}Google Results Scraper${RESET}) - (${CYAN}Google search results links serper/scraper${RESET})"
     echo -e " - [${CYAN}Q${RESET}]. ${WHITE}QUIT (${CYAN}Quit the software${RESET})"
     echo
 }
@@ -170,24 +169,13 @@ main() {
                 pause
                 ;;
             8)
-                clear_screen
-                python3 hetter/hetter.py
-                read -rp "Display output file content (y/n)?: " yorn
-                if [[ "$yorn" == "y" ]]; then
-                    read -rp "Outputted file: " outputfilename
-                    clear_screen
-                    cat "$outputfilename"
-                fi
-                pause
-                ;;
-            9)
                 read -rp "Target: " target
                 read -rp "UserList: " user_list
                 read -rp "PassList: " wordlist
                 python3 SSHash/sshash.py -t "$target" -u "$user_list" -l "$wordlist"
                 pause
                 ;;
-            10)
+            9)
                 read -rp "Domain: " domain
                 clear_screen
                 paramspider -d "$domain"
@@ -198,39 +186,46 @@ main() {
                 fi
                 pause
                 ;;
-            11)
+            10)
                 read -rp "Url: " url
                 clear_screen
                 arjun -u $url -q
                 pause
                 ;;
-            12)
+            11)
                 read -rp "Domain: " domain
                 clear_screen
                 bash IPF/main.sh -d $domain
                 pause
                 ;;
-            13)
+            12)
                 read -rp "[-m/IP]: " argument
                 clear_screen
                 bash loctrac_textonly/main.sh $argument
                 pause
                 ;;
-            14)
+            13)
                 read -rp "Query: " query
                 read -rp "Page(s) [1-5|1,5|5]: " pages
                 read -rp "Link Only/extract link (Y/N): " link_only
-                if [[ $link_only == "y" ]] || [[ $link_only == "Y" ]]; then
-                    read -p "Output: " output
-                    clear_screen
-                    python3 grs/grs.py -q "$query" -p $pages | grep -oP 'https?://\S+' > $output
+
+                if [[ $link_only == "y" || $link_only == "Y" ]]; then
+                    read -rp "[Output to file (o)] OR [Display (d)]: " output
+
+                    if [[ $output == "o" || $output == "O" ]]; then
+                        read -rp "Output file name: " output_file
+                        clear_screen
+                        python3 grs/grs.py -q "$query" -p "$pages" | grep -oP 'https?://\S+' > "$output_file"
+                    else
+                        clear_screen
+                        python3 grs/grs.py -q "$query" -p "$pages" | grep -oP 'https?://\S+'
+                    fi
                 else
                     clear_screen
-                    python3 grs/grs.py -q "$query" -p $pages
+                    python3 grs/grs.py -q "$query" -p "$pages"
                 fi
                 pause
                 ;;
-
             [Qq])
                 clear_screen
                 echo -e "${BG_CYAN}${BLACK}THANKS FOR USING PENTAGONE TOOLKIT FOR PENTESTERS!${RESET}"
