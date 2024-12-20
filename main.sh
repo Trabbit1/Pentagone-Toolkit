@@ -67,6 +67,7 @@ banner_output=$(eval "$youtube_banner" "//" "$rumble_banner" "//" "$github_banne
 # Function to display the menu
 display_menu() {
     clear_screen
+    echo
     echo -e "                                                ${YELLOW}〒${RESET}  ";
     echo -e "${BLUE} ,__  ,___ ,  , ___   .   __,  __  ,  , ,___   ${YELLOW}===${RESET}  ";
     echo -e "${BLUE} |__) |__  |\ |  |   /\  / _. /  \ |\ | |__     ${YELLOW}〣${RESET}  ";
