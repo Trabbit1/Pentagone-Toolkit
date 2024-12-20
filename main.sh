@@ -72,7 +72,7 @@ display_menu() {
     echo -e "${BLUE} ,__  ,___ ,  , ___   .   __,  __  ,  , ,___   ${YELLOW}===${RESET}  ";
     echo -e "${BLUE} |__) |__  |\ |  |   /\  / _. /  \ |\ | |__     ${YELLOW}〣${RESET}  ";
     echo -e "${BLUE} |    |___ | \|  |  /==\ \__/ \__/ | \| |___    ${YELLOW}〣${RESET}  ";
-    echo -e "                                                ${YELLOW}v${RESET}   ";
+    echo -e "                                                ${YELLOW}∀${RESET}   ";
     echo -e " ============================================== ${YELLOW}|${RESET} ====================== ";
     echo -e "${YELLOW}   * * * * *  ${RED}CREATED BY TRABBITONE${YELLOW}  * * * * *  |${RESET}   ";
     echo -e " ======================================================================= ";
