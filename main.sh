@@ -25,7 +25,7 @@ author="Trabbit"
 # Define color codes
 RED='\e[0;31m'
 GREEN='\e[0;32m'
-YELLOW='\e[1;33m'
+YELLOW='\e[0;33m'
 BLUE='\e[0;34m'
 MAGENTA='\e[0;35m'
 CYAN='\e[0;36m'
@@ -67,19 +67,16 @@ banner_output=$(eval "$youtube_banner" "//" "$rumble_banner" "//" "$github_banne
 # Function to display the menu
 display_menu() {
     clear_screen
-    echo -e "${BLUE}"
-    echo "██████╗ ███████╗███╗   ██╗████████╗ █████╗  ██████╗  ██████╗ ███╗   ██╗███████╗";
-    echo "██╔══██╗██╔════╝████╗  ██║╚══██╔══╝██╔══██╗██╔════╝ ██╔═══██╗████╗  ██║██╔════╝";
-    echo "██████╔╝█████╗  ██╔██╗ ██║   ██║   ███████║██║  ███╗██║   ██║██╔██╗ ██║█████╗  ";
-    echo "██╔═══╝ ██╔══╝  ██║╚██╗██║   ██║   ██╔══██║██║   ██║██║   ██║██║╚██╗██║██╔══╝  ";
-    echo "██║     ███████╗██║ ╚████║   ██║   ██║  ██║╚██████╔╝╚██████╔╝██║ ╚████║███████╗";
-    echo "╚═╝     ╚══════╝╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═══╝╚══════╝";
+    echo -e "                                                ${YELLOW}〒${RESET}  ";
+    echo -e "${BLUE} ,__  ,___ ,  , ___   .   __,  __  ,  , ,___   ${YELLOW}===${RESET}  ";
+    echo -e "${BLUE} |__) |__  |\ |  |   /\  / _. /  \ |\ | |__     ${YELLOW}〣${RESET}  ";
+    echo -e "${BLUE} |    |___ | \|  |  /==\ \__/ \__/ | \| |___    ${YELLOW}〣${RESET}  ";
+    echo -e "                                                ${YELLOW}∀${RESET}   ";
+    echo -e " ============================================== ${YELLOW}|${RESET} ====================== ";
+    echo -e "${YELLOW}   * * * * *  ${RED}CREATED BY TRABBITONE${YELLOW}  * * * * *  |${RESET}   ";
+    echo -e " ======================================================================= ";
     echo -e "${RESET}"
-    echo -e "                                                  ${MAGENTA}Created By ${BG_PURPLE}${WHITE} Pentagone Group ${RESET}"
-    echo "_______________________________________________________________________________"
-    echo
     echo -e "$banner_output"
-    echo "_______________________________________________________________________________"
     echo
     echo -e " - [${CYAN}1${RESET}]. Subdomain Scan (${GREEN}SubFinder${RESET}) - (${CYAN}Subdomain Enumeration Tool${RESET})"
     echo -e " - [${CYAN}2${RESET}]. Directory Fuzzing (${GREEN}FFuf${RESET}) - (${CYAN}Directory Fuzzing & Enumeration${RESET})"
