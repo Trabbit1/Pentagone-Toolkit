@@ -57,9 +57,9 @@ cleanup() {
 trap cleanup SIGINT
 
 # Define the YouTube banner command
-youtube_banner='echo -e " [ \e]8;;https://www.youtube.com/@trabbitone\a${BG_RED}${WHITE} You${RED}${BG_WHITE}Tube ${RESET}\e]8;;\a ] "'
-rumble_banner='" [ \e]8;;https://rumble.com/TrabbitOne\a${BG_GREEN}${WHITE} Rumble ${RESET}\e]8;;\a ] "'
-github_banner='" [ \e]8;;https://github.com/Trabbit0ne\a${BG_WHITE}${BLACK} GitHub ${RESET}\e]8;;\a ] "'
+youtube_banner='echo -e " [ \e]8;;https://www.youtube.com/@TrabbitOne\a YouTube ${RESET}\e]8;;\a ] "'
+rumble_banner='" [ \e]8;;https://rumble.com/TrabbitOne\a Rumble ${RESET}\e]8;;\a ] "'
+github_banner='" [ \e]8;;https://github.com/Trabbit0ne\a GitHub ${RESET}\e]8;;\a ] "'
 
 # Execute the YouTube banner command and capture output
 banner_output=$(eval "$youtube_banner" "//" "$rumble_banner" "//" "$github_banner")
