@@ -69,8 +69,8 @@ display_menu() {
     clear_screen
     echo
     echo -e "                                                ${YELLOW}〒${RESET}  ";
-    echo -e "${BLUE} ,__  ,___ ,  , ___   .   __,  __  ,  , ,___   ${YELLOW}===${RESET}  ";
-    echo -e "${BLUE} |__) |__  |\ |  |   /\  / _. /  \ |\ | |__     ${YELLOW}〣${RESET}  ";
+    echo -e "${BLUE} ,__  ,___ ,  , ___   .   __,  __  ,  , ,___   ${YELLOW}===${RESET}  Pentesting";
+    echo -e "${BLUE} |__) |__  |\ |  |   /\  / _. /  \ |\ | |__     ${YELLOW}〣${RESET}  Toolkit";
     echo -e "${BLUE} |    |___ | \|  |  /==\ \__/ \__/ | \| |___    ${YELLOW}〣${RESET}  ";
     echo -e "                                                ${YELLOW}∀${RESET}   ";
     echo -e " ============================================== ${YELLOW}|${RESET} ====================== ";
@@ -92,6 +92,7 @@ display_menu() {
     echo -e " (${CYAN}11${RESET}). Origin IP Finder (${GREEN}IPF${RESET}) - (${CYAN}IPF - Original Server IP Finder${RESET})"
     echo -e " (${CYAN}12${RESET}). IP Address Location Tracking (${GREEN}Loctrac${RESET}) - (${CYAN}IP Address Location Tracker${RESET})"
     echo -e " (${CYAN}13${RESET}). Google Results Scraper - (${GREEN}GRS${RESET}) - (${CYAN}Google search results links serper/scraper${RESET})"
+    echo -e " (${CYAN}14${RESET}). DDoS Attack - (${GREEN}DDoSer${RESET}) - (${CYAN}Simple DDoS Tool Written In Bash${RESET})"
     echo -e " (${CYAN}Q${RESET}). QUIT (${CYAN}Quit the software${RESET})"
     echo
 }
@@ -222,6 +223,12 @@ main() {
                     clear_screen
                     python3 grs/grs.py -q "$query" -p "$pages"
                 fi
+                pause
+                ;;
+            14)
+                read -rp "Target: " target
+                clear_screen
+                bash DDoSer/ddos.sh $target
                 pause
                 ;;
             [Qq])
