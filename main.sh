@@ -62,23 +62,22 @@ rumble_banner='" [ \e]8;;https://rumble.com/TrabbitOne\a Rumble ${RESET}\e]8;;\a
 github_banner='" [ \e]8;;https://github.com/Trabbit0ne\a GitHub ${RESET}\e]8;;\a ] "'
 
 # Execute the YouTube banner command and capture output
-banner_output=$(eval "$youtube_banner" "//" "$rumble_banner" "//" "$github_banner")
+banner_output=$(eval "$youtube_banner" "$rumble_banner" "$github_banner")
 
 # Function to display the menu
 display_menu() {
     clear_screen
     echo
-    echo -e "                                                ${YELLOW}〒${RESET}  ";
-    echo -e "${BLUE} ,__  ,___ ,  , ___   .   __,  __  ,  , ,___   ${YELLOW}===${RESET}  Pentesting";
-    echo -e "${BLUE} |__) |__  |\ |  |   /\  / _. /  \ |\ | |__     ${YELLOW}〣${RESET}  Toolkit";
-    echo -e "${BLUE} |    |___ | \|  |  /==\ \__/ \__/ | \| |___    ${YELLOW}〣${RESET}  ";
-    echo -e "                                                ${YELLOW}∀${RESET}   ";
-    echo -e " ============================================== ${YELLOW}|${RESET} ====================== ";
-    echo -e "${YELLOW}   * * * * *  ${RED}CREATED BY TRABBITONE${YELLOW}  * * * * *  |${RESET}   ";
-    echo -e " ======================================================================= ";
-    echo -e "${RESET}"
-    echo -e "$banner_output"
-    echo
+    echo -e "${YELLOW}                                               ===                         ";
+    echo -e "${BLUE} ,__  ,___ ,  , ___   .   __,  __  ,  , ,___    ${YELLOW}H${RESET}   Pentesting             ";
+    echo -e "${BLUE} |__) |__  |\ |  |   /\  / _. /  \ |\ | |__   ${YELLOW}=====${RESET}  Toolkit               ";
+    echo -e "${BLUE} |    |___ | \|  |  /==\ \__/ \__/ | \| |___   ${YELLOW}|${BG_GREEN} ${YELLOW}|${RESET}                         ";
+    echo -e "${YELLOW}                                               ${YELLOW}|${BG_GREEN} ${YELLOW}|${RESET}                         ";
+    echo -e " ============================================= ${YELLOW}|${BG_GREEN} ${YELLOW}|${RESET} ======================  ";
+    echo -e " ${YELLOW}  * * * * *  ${RED}CREATED BY TRABBITONE${YELLOW}  * * * * * |${BG_GREEN} ${YELLOW}|${RESET}                         ";
+    echo -e " ============================================= ${YELLOW} V${RESET}  ======================  ";
+    echo -e " $banner_output  ${YELLOW}|${RESET}                                                         ";
+    echo -e "                                                ${YELLOW}|${RESET}                          ";
     echo -e " (${CYAN}1${RESET}). Subdomain Scan (${GREEN}SubFinder${RESET}) - (${CYAN}Subdomain Enumeration Tool${RESET})"
     echo -e " (${CYAN}2${RESET}). Directory Fuzzing (${GREEN}FFuf${RESET}) - (${CYAN}Directory Fuzzing & Enumeration${RESET})"
     echo -e " (${CYAN}3${RESET}). Network Mapping (${GREEN}Nmap${RESET}) - (${CYAN}Network Mapping Tool${RESET})"
