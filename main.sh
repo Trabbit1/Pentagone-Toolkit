@@ -248,7 +248,7 @@ main() {
                 echo -e "  * ${CYAN}DDoSer${RESET}                                    "
                 echo -e "  * ${CYAN}WPenum${RESET}                                    "
                 echo
-                echo -e "[${YELLOW}Tools Created By Else${RESET}]                     "
+                echo -e "[${YELLOW}Tools Created By Other${RESET}]                     "
                 echo -e "  * ${CYAN}SubFinder${RESET}                                 "
                 echo -e "  * ${CYAN}Nmap${RESET}                                      "
                 echo -e "  * ${CYAN}Ffuf${RESET}                                      "
