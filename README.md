@@ -18,7 +18,8 @@ Paramspider,
 Arjun,
 Cloudflare-Origin-IP,
 Loctrac,
-GRS
+GRS,
+DDoSer
 
 ## Installation
 
