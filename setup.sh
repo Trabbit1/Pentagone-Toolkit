@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# clear the screen
+clear
+
 ###########################
 #            __           #
 #   ___ ___ / /___ _____  #
@@ -39,6 +42,19 @@ APT_TOOLS=(
 )
 
 # FUNCTIONS
+
+Banner() {
+    echo " _______ _______ _______ ___ ___ _______ ";
+    echo "|   _   |   _   |       |   Y   |   _   |";
+    echo "|   1___|.  1___|.|   | |.  |   |.  1   |";
+    echo "|____   |.  __)_'-|.  |-|.  |   |.  ____|";
+    echo "|:  1   |:  1   | |:  | |:  1   |:  |    ";
+    echo "|::.. . |::.. . | |::.| |::.. . |::.|    ";
+    echo "'-------'-------' '---' '-------'---'    ";
+    echo "  Pentagone Toolkit Setup - @Trabbit0ne  ";
+    echo "   -----------------------------------   ";
+    echo
+}
 
 # Clone GitHub repositories
 clone_repos() {
@@ -82,6 +98,7 @@ install_tools() {
 
 # Main execution function
 main() {
+    Banner
     clone_repos
     cp admin-panel-finder/.link.txt . || { echo "Failed to copy .link.txt"; exit 1; }
     install_tools
