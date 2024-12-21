@@ -29,6 +29,8 @@ GRS
   cd Pentagone-Toolkit && chmod +x * && ./setup.sh```
 Then
 ```
+Then
+```
   ./main.sh
 ```
     
