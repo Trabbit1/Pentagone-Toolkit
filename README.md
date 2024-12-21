@@ -26,8 +26,7 @@ Multi-Usage Pentesting Toolkit Written In Bash.
 
 
 ```bash
-git clone https://github.com/Trabbit0ne/Pentagone-Toolkit.git && cd Pentagone-Toolkit && chmod +x * && ./setup.sh```
-Then
+git clone https://github.com/Trabbit0ne/Pentagone-Toolkit.git && cd Pentagone-Toolkit && chmod +x * && ./setup.sh
 ```
 
 Then
