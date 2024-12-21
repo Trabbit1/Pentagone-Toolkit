@@ -71,9 +71,9 @@ display_menu() {
     echo -e "${YELLOW}                                               ===                         ";
     echo -e "${BLUE} ,__  ,___ ,  , ___   .   __,  __  ,  , ,___    ${YELLOW}H${RESET}   Pentesting             ";
     echo -e "${BLUE} |__) |__  |\ |  |   /\  / _. /  \ |\ | |__   ${YELLOW}=====${RESET}  Toolkit               ";
-    echo -e "${BLUE} |    |___ | \|  |  /==\ \__/ \__/ | \| |___   ${YELLOW}|${BG_GREEN} ${YELLOW}|${RESET}                         ";
+    echo -e "${BLUE} |    |___ | \|  |  /==\ \__/ \__/ | \| |___   ${YELLOW}|${BG_GREEN})${YELLOW}|${RESET}                         ";
     echo -e "${YELLOW}                                               ${YELLOW}|${BG_GREEN} ${YELLOW}|${RESET}                         ";
-    echo -e " ============================================= ${YELLOW}|${BG_GREEN} ${YELLOW}|${RESET} ======================  ";
+    echo -e " ============================================= ${YELLOW}|${BG_GREEN}(${YELLOW}|${RESET} ======================  ";
     echo -e " ${YELLOW}  * * * * *  ${RED}CREATED BY TRABBITONE${YELLOW}  * * * * * |${BG_GREEN} ${YELLOW}|${RESET}                         ";
     echo -e " ============================================= ${YELLOW} V${RESET}  ======================  ";
     echo -e " $banner_output  ${YELLOW}|${RESET}                                                         ";
