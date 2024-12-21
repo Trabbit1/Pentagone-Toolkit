@@ -27,7 +27,7 @@ RED='\e[0;31m'
 GREEN='\e[0;32m'
 YELLOW='\e[0;33m'
 BLUE='\e[0;34m'
-MAGENTA='\e[0;35m'
+PURPLE='\e[0;35m'
 CYAN='\e[0;36m'
 WHITE='\e[1;37m'
 BLACK='\e[30m'
@@ -92,6 +92,7 @@ display_menu() {
     echo -e " (${CYAN}12${RESET}). IP Address Location Tracking (${GREEN}Loctrac${RESET}) - (${CYAN}IP Address Location Tracker${RESET})"
     echo -e " (${CYAN}13${RESET}). Google Results Scraper - (${GREEN}GRS${RESET}) - (${CYAN}Google search results links serper/scraper${RESET})"
     echo -e " (${CYAN}14${RESET}). DDoS Attack - (${GREEN}DDoSer${RESET}) - (${CYAN}Simple DDoS Tool Written In Bash${RESET})"
+    echo -e " (${CYAN}a${RESET}). About (${CYAN}About Section${RESET})"
     echo -e " (${CYAN}Q${RESET}). QUIT (${CYAN}Quit the software${RESET})"
     echo
 }
@@ -228,6 +229,36 @@ main() {
                 read -rp "Target: " target
                 clear_screen
                 bash DDoSer/ddos.sh $target
+                pause
+                ;;
+            [Aa])
+                clear_screen
+                echo
+                echo -e "     [ ${BLUE}PENTAGONE TOOLKIT FOR PENTESTERS${RESET} ]     "
+                echo -e "${YELLOW}*** ${GREEN}great power comes great responsibility${YELLOW} ***${RESET}"
+                echo
+                echo -e "Author/Creator/Developer: @Trabbit0ne, @Group-Pentagone      "
+                echo -e "Creation Date: 2024-07-18 - 22:17${RESET}"
+                echo
+                echo -e "[${YELLOW}Tools Created By Pentagone Group${RESET}]          "
+                echo -e "  * ${CYAN}Loctrac${RESET}                                   "
+                echo -e "  * ${CYAN}GRS${RESET}                                       "
+                echo -e "  * ${CYAN}SSHash${RESET}                                    "
+                echo -e "  * ${CYAN}IPF${RESET}                                       "
+                echo -e "  * ${CYAN}DDoSer${RESET}                                    "
+                echo -e "  * ${CYAN}WPenum${RESET}                                    "
+                echo
+                echo -e "[${YELLOW}Tools Created By Else${RESET}]                     "
+                echo -e "  * ${CYAN}SubFinder${RESET}                                 "
+                echo -e "  * ${CYAN}Nmap${RESET}                                      "
+                echo -e "  * ${CYAN}Ffuf${RESET}                                      "
+                echo -e "  * ${CYAN}XSStrike${RESET}                                  "
+                echo -e "  * ${CYAN}SQLmap${RESET}                                    "
+                echo -e "  * ${CYAN}ParamSpider${RESET}                               "
+                echo -e "  * ${CYAN}Arjun${RESET}                                     "
+                echo -e "  * ${CYAN}Admin Panel Finder${RESET}                        "
+                echo
+                echo
                 pause
                 ;;
             [Qq])
