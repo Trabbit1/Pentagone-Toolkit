@@ -23,6 +23,7 @@ REPOS=(
     "https://github.com/Trabbit0ne/loctrac_textonly"
     "https://github.com/Trabbit0ne/IPF"
     "https://github.com/Trabbit0ne/WPenum"
+    "https://github.com/Trabbit0ne/DDoSer"
 )
 
 # PIP3 TOOLS TO INSTALL
