@@ -29,7 +29,9 @@ DDoSer
 git clone https://github.com/Trabbit0ne/Pentagone-Toolkit.git && cd Pentagone-Toolkit && chmod +x * && ./setup.sh```
 Then
 ```
+
 Then
+
 ```
 ./main.sh
 ```
