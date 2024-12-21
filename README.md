@@ -2,7 +2,7 @@
 
 Multi-Usage Pentesting Toolkit Written In Bash.
 
-![image](https://github.com/user-attachments/assets/08258d34-345b-432a-b787-d8e84b560d6c)
+![image](https://github.com/user-attachments/assets/c005835a-3a5c-4504-8181-82a9bb9b666f)
 
 ## Tools
 
