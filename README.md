@@ -11,12 +11,12 @@ Multi-Usage Pentesting Toolkit Written In Bash.
 * Nmap,
 * XSStrike,
 * SQLmap,
-* WPscan,
+* WPenum,
 * Admin Panel Finder,
 * SSHash,
 * Paramspider,
 * Arjun,
-* Cloudflare-Origin-IP,
+* IPF
 * Loctrac,
 * GRS,
 * DDoSer
