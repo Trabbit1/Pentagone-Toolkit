@@ -118,7 +118,13 @@ main() {
             1)
                 read -rp "Domain: " domain
                 clear_screen
-                subfinder -d "$domain"
+                read -p "Output File (y/n)?: " output
+                if [[ $output == "y" ]] || [[ $output == "Y" ]]; then
+                    read -p "Output File: " output_file
+                    subfinder -d "$domain" -o $output_file
+                else
+                    subfinder -d "$domain"
+                fi
                 pause
                 ;;
             2)
