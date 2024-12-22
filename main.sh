@@ -235,12 +235,12 @@ main() {
                 clear_screen
                 echo
                 echo -e "     [ ${BLUE}PENTAGONE TOOLKIT FOR PENTESTERS${RESET} ]     "
-                echo -e "${YELLOW}*** ${GREEN}great power comes great responsibility${YELLOW} ***${RESET}"
+                echo -e "${YELLOW}*** ${RESET}great power comes great responsibility${YELLOW} ***${RESET}"
                 echo
                 echo -e "Author/Creator/Developer: @Trabbit0ne, @Group-Pentagone      "
                 echo -e "Creation Date: 2024-07-18 - 22:17${RESET}"
                 echo
-                echo -e "[${YELLOW}Tools Created By Pentagone Group${RESET}]          "
+                echo -e "[${RED}Tools Created By Pentagone Group${RESET}]          "
                 echo -e "  * ${CYAN}Loctrac${RESET}                                   "
                 echo -e "  * ${CYAN}GRS${RESET}                                       "
                 echo -e "  * ${CYAN}SSHash${RESET}                                    "
@@ -248,7 +248,7 @@ main() {
                 echo -e "  * ${CYAN}DDoSer${RESET}                                    "
                 echo -e "  * ${CYAN}WPenum${RESET}                                    "
                 echo
-                echo -e "[${YELLOW}Tools Created By Other${RESET}]                     "
+                echo -e "[${RED}Tools Created By Other${RESET}]                     "
                 echo -e "  * ${CYAN}SubFinder${RESET}                                 "
                 echo -e "  * ${CYAN}Nmap${RESET}                                      "
                 echo -e "  * ${CYAN}Ffuf${RESET}                                      "
