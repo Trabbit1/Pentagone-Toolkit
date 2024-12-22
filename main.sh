@@ -129,7 +129,8 @@ main() {
                 ;;
             2)
                 read -rp "URL: " url
-                read -rp "Wordlist: " wordlist
+                read -rp "Wordlist (Default: onelistforallmicro.txt [Press Enter To Use Default One]): " wordlist
+                wordlist="${wordlist:-onelistforallmicro.txt}"
                 read -rp "-mc (put ',' between all example: 200,404,403): " mcs
                 clear_screen
                 ffuf -u "${url}/FUZZ" -w "$wordlist" -mc "$mcs"
