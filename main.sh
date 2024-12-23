@@ -92,6 +92,7 @@ display_menu() {
     echo -e " (${CYAN}12${RESET}). IP Address Location Tracking (${GREEN}Loctrac${RESET}) - (${CYAN}IP Address Location Tracker${RESET})"
     echo -e " (${CYAN}13${RESET}). Google Results Scraper - (${GREEN}GRS${RESET}) - (${CYAN}Google search results links serper/scraper${RESET})"
     echo -e " (${CYAN}14${RESET}). DDoS Attack - (${GREEN}DDoSer${RESET}) - (${CYAN}Simple DDoS Tool Written In Bash${RESET})"
+    echo -e " (${CYAN}15${RESET}). Web Screenshot - (${GREEN}Sshot${RESET}) - (${CYAN}Unlimited Web Screenshot Tool${RESET})"
     echo -e " (${CYAN}a${RESET}). About (${CYAN}About Section${RESET})"
     echo -e " (${CYAN}Q${RESET}). QUIT (${CYAN}Quit the software${RESET})"
     echo
@@ -238,6 +239,18 @@ main() {
                 bash DDoSer/ddos.sh $target
                 pause
                 ;;
+            15)
+                read -rp "URL/Domain: " target
+                read -rp "Full Page (y/n)?: " full_screen
+                if [ $full_page == "y" ] || [ $full_page == "Y"]; then
+                    clear_screen
+                    bash Sshot/main.sh --full_page $target
+                else
+                    clear_screen
+                    bash Sshot/main.sh $target
+                fi
+                pause
+                ;;
             [Aa])
                 clear_screen
                 echo
@@ -245,7 +258,7 @@ main() {
                 echo -e "${YELLOW}*** ${RESET}great power comes great responsibility${YELLOW} ***${RESET}"
                 echo
                 echo -e "Author/Creator/Developer: ${GREEN}@Trabbit0ne${RESET}, ${GREEN}@Group-Pentagone${RESET}      "
-                echo -e "Creation Date: 2024-07-18 - 22:17${RESET}"
+                echo -e "Creation Date: ${GREEN}2024-07-18 - 22:17${RESET}"
                 echo
                 echo -e "[${RED}Tools Created By Pentagone Group${RESET}]          "
                 echo -e "  * ${CYAN}Loctrac${RESET}                                   "
