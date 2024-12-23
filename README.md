@@ -20,6 +20,7 @@ Multi-Usage Pentesting Toolkit Written In Bash.
 * Loctrac,
 * GRS,
 * DDoSer
+* Sshot
 
 ## Installation
 
