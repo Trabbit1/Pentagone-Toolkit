@@ -244,7 +244,7 @@ main() {
                 read -rp "Full Page (y/n)?: " full_screen
                 if [[ "$full_screen" == "y" ]] || [[ "$full_screen" == "Y" ]]; then
                     clear_screen
-                    bash Sshot/main.sh --full_page $target
+                    bash Sshot/main.sh -f $target
                 else
                     clear_screen
                     bash Sshot/main.sh $target
