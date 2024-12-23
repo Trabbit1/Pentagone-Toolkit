@@ -2,7 +2,7 @@
 
 Multi-Usage Pentesting Toolkit Written In Bash.
 
-![image](https://github.com/Trabbit0ne/Pentagone-Toolkit/blob/main/medias/Capture.PNG)
+![image](https://github.com/Trabbit0ne/Pentagone-Toolkit/blob/main/medias/screenshot.PNG)
 
 ## Tools
 
