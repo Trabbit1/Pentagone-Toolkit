@@ -242,7 +242,7 @@ main() {
             15)
                 read -rp "URL/Domain: " target
                 read -rp "Full Page (y/n)?: " full_screen
-                if [ $full_page == "y" ] || [ $full_page == "Y"]; then
+                if [[ "$full_screen" == "y" ]] || [[ "$full_screen" == "Y" ]]; then
                     clear_screen
                     bash Sshot/main.sh --full_page $target
                 else
