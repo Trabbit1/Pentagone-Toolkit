@@ -32,7 +32,7 @@ CYAN='\e[0;36m'
 WHITE='\e[1;37m'
 BLACK='\e[30m'
 BG_RED="\e[1;41m"
-BG_GREEN="\e[42m"
+BG_GREEN="\e[1;42m"
 BG_YELLOW="\e[43m"
 BG_BLUE="\e[1;44m"
 BG_PURPLE="\e[45m"
@@ -244,7 +244,7 @@ main() {
                 echo -e "     [ ${BLUE}PENTAGONE TOOLKIT FOR PENTESTERS${RESET} ]     "
                 echo -e "${YELLOW}*** ${RESET}great power comes great responsibility${YELLOW} ***${RESET}"
                 echo
-                echo -e "Author/Creator/Developer: @Trabbit0ne, @Group-Pentagone      "
+                echo -e "Author/Creator/Developer: ${GREEN}@Trabbit0ne${RESET}, ${GREEN}@Group-Pentagone${RESET}      "
                 echo -e "Creation Date: 2024-07-18 - 22:17${RESET}"
                 echo
                 echo -e "[${RED}Tools Created By Pentagone Group${RESET}]          "
