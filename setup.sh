@@ -28,6 +28,7 @@ REPOS=(
     "https://github.com/Trabbit0ne/WPenum"
     "https://github.com/Trabbit0ne/DDoSer"
     "https://github.com/Trabbit0ne/Sshot"
+    "https://github.com/Trabbit0ne/PWDEXT"
 )
 
 # PIP3 TOOLS TO INSTALL
