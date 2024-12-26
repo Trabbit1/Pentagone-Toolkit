@@ -93,7 +93,9 @@ display_menu() {
     echo -e " (${CYAN}13${RESET}). Google Results Scraper - (${GREEN}GRS${RESET}) - (${CYAN}Google search results links serper/scraper${RESET})"
     echo -e " (${CYAN}14${RESET}). DDoS Attack - (${GREEN}DDoSer${RESET}) - (${CYAN}Simple DDoS Tool Written In Bash${RESET})"
     echo -e " (${CYAN}15${RESET}). Web Screenshot - (${GREEN}Sshot${RESET}) - (${CYAN}Unlimited Web Screenshot Tool${RESET})"
-    echo -e " (${CYAN}a${RESET}). About (${CYAN}About Section${RESET})"
+    echo -e " (${CYAN}16${RESET}). Password Leak Searcher - (${GREEN}PWDEXT${RESET}) - (${CYAN}Plaintext Password Leakage Searcher${RESET})"
+    echo -e " (${CYAN}A${RESET}). About (${CYAN}About Section${RESET})"
+    echo -e " (${CYAN}O${RESET}). Others (${CYAN}Other Tools${RESET})"
     echo -e " (${CYAN}Q${RESET}). QUIT (${CYAN}Quit the software${RESET})"
     echo
 }
@@ -102,6 +104,52 @@ display_menu() {
 pause() {
     read -rp "Press Enter To Return To Menu..." temp
 }
+
+#!/bin/bash
+
+# Other Tools Menu Function
+other_tools_menu() {
+    while true; do
+        clear_screen
+        echo
+        echo -e "(${CYAN}1${RESET}). Domain To IP"
+        echo -e "(${CYAN}2${RESET}). HTTP Header Viewer"
+        echo -e "(${CYAN}B${RESET}). Back to Main Menu"
+        echo -e "(${CYAN}Q${RESET}). Quit"
+        echo
+
+        prompt2=$(echo -e "${BLUE}(${YELLOW} Pentagone Toolkit ${BLUE}) - [${GREEN} Other Tools ${BLUE}]${RESET}~${RED}#${RESET} ")
+        read -rp "$prompt2" other_tool
+
+        case "$other_tool" in
+            1)
+                read -rp "Enter Domain: " domain
+                clear_screen
+                echo -e "${GREEN}Resolving IP for domain: ${domain}${RESET}"
+                dig +short "$domain"
+                pause
+                ;;
+            2)
+                read -rp "Enter URL: " url
+                clear_screen
+                echo -e "${GREEN}Fetching HTTP Headers for: ${url}${RESET}"
+                curl -I "$url"
+                pause
+                ;;
+            [Bb])
+                return 0
+                ;;
+            [Qq])
+                cleanup
+                ;;
+            *)
+                echo -e "${RED}Invalid option. Please try again.${RESET}"
+                pause
+                ;;
+        esac
+    done
+}
+
 
 # Main function
 main() {
@@ -251,6 +299,12 @@ main() {
                 fi
                 pause
                 ;;
+            16)
+                read -rp "Query: " query
+                clear_screen
+                bash PWDEXT/main.sh $query
+                pause
+                ;;
             [Aa])
                 clear_screen
                 echo
@@ -280,6 +334,10 @@ main() {
                 echo
                 echo
                 pause
+                ;;
+            [Oo])
+                clear_screen
+                other_tools_menu
                 ;;
             [Qq])
                 clear_screen
