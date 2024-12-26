@@ -21,6 +21,7 @@ Multi-Usage Pentesting Toolkit Written In Bash.
 * GRS,
 * DDoSer
 * Sshot
+  Others
 
 ## Installation
 
