@@ -2,6 +2,8 @@
 
 Multi-Usage Pentesting Toolkit Written In Bash.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/J3J218ZI4G)
+
 ![image](https://github.com/Trabbit0ne/Pentagone-Toolkit/blob/main/medias/Capture.PNG)
 
 ## Tools
