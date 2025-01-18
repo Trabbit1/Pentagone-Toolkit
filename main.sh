@@ -19,7 +19,7 @@
 # ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 # Variables
-version="1.9"
+version="2.0"
 author="Trabbit"
 
 # Define color codes
@@ -47,6 +47,10 @@ clear_screen() {
     clear
 }
 
+handle_interrupt() {
+    echo -e "\n${CYAN}Scan interrupted! Returning to menu...${RESET}"
+}
+
 cleanup() {
     clear
     echo -e "${BG_CYAN}${BLACK}THANKS FOR USING PENTAGONE TOOLKIT FOR PENTESTERS!${RESET}"
@@ -66,12 +70,13 @@ banner_output=$(eval "$youtube_banner" "$rumble_banner" "$github_banner")
 
 # Function to display the menu
 display_menu() {
+    trap '' SIGINT  # Disable Ctrl+C during the main menu
     clear_screen
     echo
     echo -e "${YELLOW}                                               ===                         ";
     echo -e "${BLUE} ,__  ,___ ,  , ___   .   __,  __  ,  , ,___    ${YELLOW}H${RESET}   Pentesting             ";
     echo -e "${BLUE} |__) |__  |\ |  |   /\  / _. /  \ |\ | |__   ${YELLOW}=====${RESET}  Toolkit               ";
-    echo -e "${BLUE} |    |___ | \|  |  /==\ \__/ \__/ | \| |___   ${YELLOW}|${BG_GREEN})${YELLOW}|${RESET}                         ";
+    echo -e "${BLUE} |    |___ | \|  |  /--\ \__/ \__/ | \| |___   ${YELLOW}|${BG_GREEN})${YELLOW}|${RESET}                         ";
     echo -e "${YELLOW}                                               ${YELLOW}|${BG_GREEN} ${YELLOW}|${RESET}                         ";
     echo -e " ============================================= ${YELLOW}|${BG_GREEN}(${YELLOW}|${RESET} ======================  ";
     echo -e " ${YELLOW}  * * * * *  ${RED}CREATED BY TRABBITONE${YELLOW}  * * * * * |${BG_GREEN} ${YELLOW}|${RESET}                         ";
@@ -85,7 +90,7 @@ display_menu() {
     echo -e " (${CYAN}5${RESET}). SQLi Scan (${GREEN}Sqlmap${RESET}) - (${CYAN}SQL Injection Vulnerability Scanner${RESET})"
     echo -e " (${CYAN}6${RESET}). Wordpress Enumeration Scan (${GREEN}WPenum${RESET}) - (${CYAN}Wordpress Users Enumerator${RESET})"
     echo -e " (${CYAN}7${RESET}). Admin-Panel Scan - (${GREEN}Admin Panel Finder${RESET}) - (${CYAN}Find Admin Panel Of Web Servers${RESET})"
-    echo -e " (${CYAN}8${RESET}). SSh & FTP Server Brute-Forcing (${GREEN}SSHash${RESET}) - (${CYAN}SSH/FTP Brute Forcing Tool${RESET})"
+    echo -e " (${CYAN}8${RESET}). SSH & FTP Server Brute-Forcing (${GREEN}SSHash${RESET}) - (${CYAN}SSH/FTP Brute Forcing Tool${RESET})"
     echo -e " (${CYAN}9${RESET}). HTTP Parameter Scan 1 (${GREEN}Paramspider${RESET}) - (${CYAN}Http Parameter Scanner${RESET})"
     echo -e " (${CYAN}10${RESET}). HTTP Parameter Scan 2 (${GREEN}Arjun${RESET}) - (${CYAN}Http Parameter Scanner${RESET})"
     echo -e " (${CYAN}11${RESET}). Origin IP Finder (${GREEN}IPF${RESET}) - (${CYAN}IPF - Original Server IP Finder${RESET})"
@@ -94,6 +99,8 @@ display_menu() {
     echo -e " (${CYAN}14${RESET}). DDoS Attack - (${GREEN}DDoSer${RESET}) - (${CYAN}Simple DDoS Tool Written In Bash${RESET})"
     echo -e " (${CYAN}15${RESET}). Web Screenshot - (${GREEN}Sshot${RESET}) - (${CYAN}Unlimited Web Screenshot Tool${RESET})"
     echo -e " (${CYAN}16${RESET}). Password Leak Searcher - (${GREEN}PWDEXT${RESET}) - (${CYAN}Plaintext Password Leakage Searcher${RESET})"
+    echo -e " (${CYAN}17${RESET}). CORS Vulnerability Scan - (${GREEN}Corsica${RESET}) - (${CYAN}Bash Written CORS Vulnerability Scanner${RESET})"
+    echo -e " (${CYAN}18${RESET}). XST Vulnerability Scan - (${GREEN}Crosstracer${RESET}) - (${CYAN}Bash Written XST Vulnerability Scanner${RESET})"
     echo -e " (${CYAN}A${RESET}). About (${CYAN}About Section${RESET})"
     echo -e " (${CYAN}O${RESET}). Others (${CYAN}Other Tools${RESET})"
     echo -e " (${CYAN}Q${RESET}). QUIT (${CYAN}Quit the software${RESET})"
@@ -126,6 +133,7 @@ other_tools_menu() {
                 read -rp "Enter Domain: " domain
                 clear_screen
                 echo -e "${GREEN}Resolving IP for domain: ${domain}${RESET}"
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 dig +short "$domain"
                 pause
                 ;;
@@ -133,6 +141,7 @@ other_tools_menu() {
                 read -rp "Enter URL: " url
                 clear_screen
                 echo -e "${GREEN}Fetching HTTP Headers for: ${url}${RESET}"
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 curl -I "$url"
                 pause
                 ;;
@@ -157,7 +166,6 @@ main() {
     while true; do
         prompt="${BLUE}╭─[${GREEN} V${version} ${BLUE}] ─ (${RED} Select A Tool ${BLUE})
 ╰─${YELLOW}# ${RESET}"
-# ${BLUE}${RED}~${GREEN}# ${RESET}"
 
         display_menu
         echo -ne "$prompt"
@@ -170,9 +178,16 @@ main() {
                 read -p "Output File (y/n)?: " output
                 if [[ $output == "y" ]] || [[ $output == "Y" ]]; then
                     read -p "Output File: " output_file
-                    subfinder -d "$domain" -o $output_file
+                    clear_screen
+                    trap handle_interrupt SIGINT  # Set up trap for sqlmap process
+                    echo -e "Scanning for subdomains..."
+                    echo -e "--------------------------"
+                    subfinder -d "$domain" -silent -o $output_file
                 else
-                    subfinder -d "$domain"
+                    clear_screen
+                    trap handle_interrupt SIGINT  # Set up trap for sqlmap process
+                    echo -e "Scanning for subdomains..."
+                    subfinder -d "$domain" -silent
                 fi
                 pause
                 ;;
@@ -182,19 +197,27 @@ main() {
                 wordlist="${wordlist:-onelistforallmicro.txt}"
                 read -rp "-mc (put ',' between all example: 200,404,403): " mcs
                 clear_screen
-                ffuf -u "${url}/FUZZ" -w "$wordlist" -mc "$mcs"
+                echo -e "Scanning for files & directories..."
+                echo -e "--------------------------"
+                if [[ ! $url =~ ^https?:// ]]; then
+                    url="https://$url"
+                fi
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
+                ffuf -u "${url}/FUZZ" -w "$wordlist" -mc "$mcs" -s
                 pause
                 ;;
             3)
                 read -rp "Domain: " domain
                 read -rp "Arguments (separated by space): " arguments
                 clear_screen
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 nmap $arguments "$domain"
                 pause
                 ;;
             4)
                 read -rp "URL: " url
                 clear_screen
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 python3 XSStrike/xsstrike.py -u "$url"
                 pause
                 ;;
@@ -209,17 +232,20 @@ main() {
                     arguments="--tamper=space2comment --level 4 --risk 3 -v 3 -t 3 --dbs"
                 fi
                 clear_screen
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 sqlmap -u "$url" $arguments
                 pause
                 ;;
             6)
                 read -rp "URL: " url
                 clear_screen
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 bash WPenum/main.sh $url
                 pause
                 ;;
             7)
                 clear_screen
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 python3 admin-panel-finder/admin-finder.py
                 pause
                 ;;
@@ -227,12 +253,14 @@ main() {
                 read -rp "Target: " target
                 read -rp "UserList: " user_list
                 read -rp "PassList: " wordlist
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 python3 SSHash/sshash.py -t "$target" -u "$user_list" -l "$wordlist"
                 pause
                 ;;
             9)
                 read -rp "Domain: " domain
                 clear_screen
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 paramspider -d "$domain"
                 read -rp "Display Results (y/n)?: " display_output
                 if [[ "$display_output" == "y" ]]; then
@@ -244,18 +272,21 @@ main() {
             10)
                 read -rp "Url: " url
                 clear_screen
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 arjun -u $url -q
                 pause
                 ;;
             11)
                 read -rp "Domain: " domain
                 clear_screen
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 bash IPF/main.sh -d $domain
                 pause
                 ;;
             12)
                 read -rp "[-m/IP]: " argument
                 clear_screen
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 bash loctrac_textonly/main.sh $argument
                 pause
                 ;;
@@ -270,13 +301,16 @@ main() {
                     if [[ $output == "o" || $output == "O" ]]; then
                         read -rp "Output file name: " output_file
                         clear_screen
+                        trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                         python3 grs/grs.py -q "$query" -p "$pages" | grep -oP 'https?://\S+' > "$output_file"
                     else
                         clear_screen
+                        trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                         python3 grs/grs.py -q "$query" -p "$pages" | grep -oP 'https?://\S+'
                     fi
                 else
                     clear_screen
+                    trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                     python3 grs/grs.py -q "$query" -p "$pages"
                 fi
                 pause
@@ -284,6 +318,7 @@ main() {
             14)
                 read -rp "Target: " target
                 clear_screen
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 bash DDoSer/ddos.sh $target
                 pause
                 ;;
@@ -292,9 +327,11 @@ main() {
                 read -rp "Full Page (y/n)?: " full_screen
                 if [[ "$full_screen" == "y" ]] || [[ "$full_screen" == "Y" ]]; then
                     clear_screen
+                    trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                     bash Sshot/main.sh -f $target
                 else
                     clear_screen
+                    trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                     bash Sshot/main.sh $target
                 fi
                 pause
@@ -302,7 +339,36 @@ main() {
             16)
                 read -rp "Query: " query
                 clear_screen
+                trap handle_interrupt SIGINT  # Set up trap for sqlmap process
                 bash PWDEXT/main.sh $query
+                pause
+                ;;
+            17)
+                read -rp "[File/URL]?:  " fileurl
+                clear_screen
+                if [ "$fileurl" == "file" ]; then
+                    read -rp "File: " file
+                    trap handle_interrupt SIGINT  # Set up trap for sqlmap process
+                    bash corsica/main.sh -f $file
+                elif [ "$fileurl" == "url" ]; then
+                    read -rp "URL: " url
+                    trap handle_interrupt SIGINT  # Set up trap for sqlmap process
+                    bash corsica/main.sh -u $url
+                fi
+                pause
+                ;;
+            18)
+                read -rp "[File/URL]?:  " fileurl
+                clear_screen
+                if [ "$fileurl" == "file" ]; then
+                    read -rp "File: " file
+                    trap handle_interrupt SIGINT  # Set up trap for sqlmap process
+                    bash crosstracer/main.sh -m $file
+                elif [ "$fileurl" == "url" ]; then
+                    read -rp "URL: " url
+                    trap handle_interrupt SIGINT  # Set up trap for sqlmap process
+                    bash crosstracer/main.sh $url
+                fi
                 pause
                 ;;
             [Aa])
