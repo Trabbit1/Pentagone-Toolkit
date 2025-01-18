@@ -21,8 +21,10 @@ Multi-Usage Pentesting Toolkit Written In Bash.
 * IPF
 * Loctrac,
 * GRS,
-* DDoSer
-* Sshot
+* DDoSer,
+* Sshot,
+* Corsica
+* Crosstracer,
   Others
 
 ## Installation
