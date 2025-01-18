@@ -72,7 +72,6 @@ banner_output=$(eval "$youtube_banner" "$rumble_banner" "$github_banner")
 display_menu() {
     trap '' SIGINT  # Disable Ctrl+C during the main menu
     clear_screen
-    echo
     echo -e "${YELLOW}                                               ===                         ";
     echo -e "${BLUE} ,__  ,___ ,  , ___   .   __,  __  ,  , ,___    ${YELLOW}H${RESET}   Pentesting             ";
     echo -e "${BLUE} |__) |__  |\ |  |   /\  / _. /  \ |\ | |__   ${YELLOW}=====${RESET}  Toolkit               ";
