@@ -96,7 +96,7 @@ install_tools() {
         if apt -l | grep -q "$apt_tool"; then
             echo "System tool $apt_tool is already installed, skipping..."
         else
-            apt install -y "$apt_tool" || { echo "Failed to install $apt_tool"; }
+            apt install "$apt_tool" -y || { echo "Failed to install $apt_tool"; }
         fi
     done
 }
