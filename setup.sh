@@ -31,6 +31,7 @@ REPOS=(
     "https://github.com/Trabbit0ne/PToolkit_Others"
     "https://github.com/Trabbit0ne/crosstracer"
     "https://github.com/Trabbit0ne/corsica"
+    "https://github.com/devanshbatham/paramspider"
 )
 
 # PIP3 TOOLS TO INSTALL
@@ -106,6 +107,7 @@ main() {
     clone_repos
     cp admin-panel-finder/.link.txt . || { echo "Failed to copy .link.txt"; exit 1; }
     install_tools
+    python3 paramspider/setup.py install
 
     # Download and set up subfinder
     wget "https://github.com/projectdiscovery/subfinder/releases/download/v2.6.7/subfinder_2.6.7_linux_amd64.zip"
