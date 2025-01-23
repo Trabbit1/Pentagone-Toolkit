@@ -1,63 +1,68 @@
 #!/bin/bash
 
-##########################################################################
-# WARNING: This Tool Is Made For Pentesters And Ethical Purposes         #
-##########################################################################
+###############################################################################
+#                               WARNING                                       #
+#           This tool is made for Pentesters and ethical purposes             #
+###############################################################################
 
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# ----------------------------------------
-# Youtube: TrabbitOne
-# BuyMeACoffee: trabbit0ne
-# Bitcoin: bc1qehnsx5tdwkulamttzla96dmv82ty9ak8l5yy40
-# ----------------------------------------
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-# ----------------------------------------
-# Bug Bounty/Pentest Tools Framework
-# Author: Trabbit
-# Date: 2024-07-18
-# ----------------------------------------
-# ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# ---------------------------------------------------------------------------
+# Youtube:        TrabbitOne
+# BuyMeACoffee:   trabbit0ne
+# Bitcoin:        bc1qehnsx5tdwkulamttzla96dmv82ty9ak8l5yy40
+# ---------------------------------------------------------------------------
+
+# ---------------------------------------------------------------------------
+# Bug Bounty / Pentest Tools Framework
+# Author:        Trabbit
+# Date:          2024-07-18
+# ---------------------------------------------------------------------------
 
 # Variables
 version="2.0"
 author="Trabbit"
 
-# Define color codes
-RED='\e[0;31m'
-GREEN='\e[0;32m'
-YELLOW='\e[0;33m'
-BLUE='\e[0;34m'
-PURPLE='\e[0;35m'
-CYAN='\e[0;36m'
-WHITE='\e[1;37m'
-BLACK='\e[30m'
-BG_RED="\e[1;41m"
-BG_GREEN="\e[1;42m"
-BG_YELLOW="\e[43m"
-BG_BLUE="\e[1;44m"
-BG_PURPLE="\e[45m"
-BG_WHITE='\e[47m'
-BG_CYAN="\e[0;46m"
-RESET='\e[0m'
-BOLD='\e[1m'
-UNDERLINE='\e[4m'
+# Define text color codes for terminal output
+RED='\e[0;31m'       # Text Color: Red
+GREEN='\e[0;32m'     # Text Color: Green
+YELLOW='\e[0;33m'    # Text Color: Yellow
+BLUE='\e[0;34m'      # Text Color: Blue
+PURPLE='\e[0;35m'    # Text Color: Purple
+CYAN='\e[0;36m'      # Text Color: Cyan
+WHITE='\e[1;37m'     # Text Color: Bright White
+BLACK='\e[30m'       # Text Color: Black
 
-# Function to clear the screen
+# Define background color codes for terminal output
+BG_RED="\e[1;41m"    # Background Color: Red
+BG_GREEN="\e[1;42m"  # Background Color: Green
+BG_YELLOW="\e[43m"   # Background Color: Yellow
+BG_BLUE="\e[1;44m"   # Background Color: Blue
+BG_PURPLE="\e[45m"   # Background Color: Purple
+BG_CYAN="\e[0;46m"   # Background Color: Cyan
+BG_WHITE='\e[47m'    # Background Color: White
+
+# Define text formatting options
+RESET='\e[0m'        # Reset all colors and formatting
+BOLD='\e[1m'         # Bold text
+UNDERLINE='\e[4m'    # Underlined text
+
+# Function to clear the terminal screen
 clear_screen() {
     clear
 }
 
+# Function to handle script interruptions (e.g., Ctrl+C).
 handle_interrupt() {
     echo -e "\n${CYAN}Scan interrupted! Returning to menu...${RESET}"
 }
 
+# Function to clean up before exiting the script.
 cleanup() {
     clear
     echo -e "${BG_CYAN}${BLACK}THANKS FOR USING PENTAGONE TOOLKIT FOR PENTESTERS!${RESET}"
     exit 1
 }
 
-# Set up the trap to catch SIGINT (Ctrl+C)
+# Trap SIGINT (Ctrl+C) to trigger the cleanup function.
 trap cleanup SIGINT
 
 # Define the YouTube banner command
@@ -68,53 +73,51 @@ github_banner='" [ \e]8;;https://github.com/Trabbit0ne\a GitHub ${RESET}\e]8;;\a
 # Execute the YouTube banner command and capture output
 banner_output=$(eval "$youtube_banner" "$rumble_banner" "$github_banner")
 
-# Function to display the menu
+# Function to display the main menu
 display_menu() {
     trap '' SIGINT  # Disable Ctrl+C during the main menu
     clear_screen
-    echo -e "${YELLOW}                                               ===                         ";
-    echo -e "${BLUE} ,__  ,___ ,  , ___   .   __,  __  ,  , ,___    ${YELLOW}H${RESET}   Pentesting             ";
-    echo -e "${BLUE} |__) |__  |\ |  |   /\  / _. /  \ |\ | |__   ${YELLOW}=====${RESET}  Toolkit               ";
-    echo -e "${BLUE} |    |___ | \|  |  /--\ \__/ \__/ | \| |___   ${YELLOW}|${BG_GREEN})${YELLOW}|${RESET}                         ";
-    echo -e "${YELLOW}                                               ${YELLOW}|${BG_GREEN} ${YELLOW}|${RESET}                         ";
-    echo -e " ============================================= ${YELLOW}|${BG_GREEN}(${YELLOW}|${RESET} ======================  ";
-    echo -e " ${YELLOW}  * * * * *  ${RED}CREATED BY TRABBITONE${YELLOW}  * * * * * |${BG_GREEN} ${YELLOW}|${RESET}                         ";
-    echo -e " ============================================= ${YELLOW} V${RESET}  ======================  ";
-    echo -e " $banner_output  ${YELLOW}|${RESET}                                                         ";
-    echo -e "                                                ${YELLOW}|${RESET}                          ";
-    echo -e " (${CYAN}1${RESET}). Subdomain Scan (${GREEN}SubFinder${RESET}) - (${CYAN}Subdomain Enumeration Tool${RESET})"
-    echo -e " (${CYAN}2${RESET}). Directory Fuzzing (${GREEN}FFuf${RESET}) - (${CYAN}Directory Fuzzing & Enumeration${RESET})"
-    echo -e " (${CYAN}3${RESET}). Network Mapping (${GREEN}Nmap${RESET}) - (${CYAN}Network Mapping Tool${RESET})"
-    echo -e " (${CYAN}4${RESET}). XSS Scan (${GREEN}XSStrike${RESET}) - (${CYAN}Cross Site Scripting vulnerability Scanner${RESET})"
-    echo -e " (${CYAN}5${RESET}). SQLi Scan (${GREEN}Sqlmap${RESET}) - (${CYAN}SQL Injection Vulnerability Scanner${RESET})"
-    echo -e " (${CYAN}6${RESET}). Wordpress Enumeration Scan (${GREEN}WPenum${RESET}) - (${CYAN}Wordpress Users Enumerator${RESET})"
-    echo -e " (${CYAN}7${RESET}). Admin-Panel Scan - (${GREEN}Admin Panel Finder${RESET}) - (${CYAN}Find Admin Panel Of Web Servers${RESET})"
-    echo -e " (${CYAN}8${RESET}). SSH & FTP Server Brute-Forcing (${GREEN}SSHash${RESET}) - (${CYAN}SSH/FTP Brute Forcing Tool${RESET})"
-    echo -e " (${CYAN}9${RESET}). HTTP Parameter Scan 1 (${GREEN}Paramspider${RESET}) - (${CYAN}Http Parameter Scanner${RESET})"
-    echo -e " (${CYAN}10${RESET}). HTTP Parameter Scan 2 (${GREEN}Arjun${RESET}) - (${CYAN}Http Parameter Scanner${RESET})"
-    echo -e " (${CYAN}11${RESET}). Origin IP Finder (${GREEN}IPF${RESET}) - (${CYAN}IPF - Original Server IP Finder${RESET})"
-    echo -e " (${CYAN}12${RESET}). IP Address Location Tracking (${GREEN}Loctrac${RESET}) - (${CYAN}IP Address Location Tracker${RESET})"
-    echo -e " (${CYAN}13${RESET}). Google Results Scraper - (${GREEN}GRS${RESET}) - (${CYAN}Google search results links serper/scraper${RESET})"
-    echo -e " (${CYAN}14${RESET}). DDoS Attack - (${GREEN}DDoSer${RESET}) - (${CYAN}Simple DDoS Tool Written In Bash${RESET})"
-    echo -e " (${CYAN}15${RESET}). Web Screenshot - (${GREEN}Sshot${RESET}) - (${CYAN}Unlimited Web Screenshot Tool${RESET})"
-    echo -e " (${CYAN}16${RESET}). Password Leak Searcher - (${GREEN}PWDEXT${RESET}) - (${CYAN}Plaintext Password Leakage Searcher${RESET})"
-    echo -e " (${CYAN}18${RESET}). XST Vulnerability Scan - (${GREEN}Crosstracer${RESET}) - (${CYAN}Bash Written XST Vulnerability Scanner${RESET})"
-    echo -e " (${CYAN}17${RESET}). CORS Vulnerability Scan - (${GREEN}Corsica${RESET}) - (${CYAN}Bash Written CORS Vulnerability Scanner${RESET})"
-    echo -e " (${CYAN}19${RESET}). Fast HTTP Scan - (${GREEN}HTTPX${RESET}) - (${CYAN}Fast HTTP Toolkit Written In GO${RESET})"
-    echo -e " (${CYAN}A${RESET}). About (${CYAN}About Section${RESET})"
-    echo -e " (${CYAN}O${RESET}). Others (${CYAN}Other Tools${RESET})"
-    echo -e " (${CYAN}Q${RESET}). QUIT (${CYAN}Quit the software${RESET})"
+    echo -e "${YELLOW}                                               ===                                                                            "
+    echo -e "${BLUE} ,__  ,___ ,  , ___   .   __,  __  ,  , ,___    ${YELLOW}H${RESET}   Pentesting                                                 "
+    echo -e "${BLUE} |__) |__  |\ |  |   /\  / _. /  \ |\ | |__   ${YELLOW}=====${RESET}  Toolkit                                                   "
+    echo -e "${BLUE} |    |___ | \|  |  /--\ \__/ \__/ | \| |___   ${YELLOW}|${BG_GREEN})${YELLOW}|${RESET}                                         "
+    echo -e "${YELLOW}                                               ${YELLOW}|${BG_GREEN} ${YELLOW}|${RESET}                                       "
+    echo -e " ============================================= ${YELLOW}|${BG_GREEN}(${YELLOW}|${RESET} ======================                         "
+    echo -e " ${YELLOW}  * * * * *  ${RED}CREATED BY TRABBITONE${YELLOW}  * * * * * |${BG_GREEN} ${YELLOW}|${RESET}                                 "
+    echo -e " ============================================= ${YELLOW} V${RESET}  ======================                                             "
+    echo -e " $banner_output  ${YELLOW}|${RESET}                                                                                                    "
+    echo -e "                                                ${YELLOW}|${RESET}                                                                     "
+    echo -e " (${CYAN}1${RESET}). Subdomain Scan (${GREEN}SubFinder${RESET}) - (${CYAN}Subdomain Enumeration Tool${RESET})                          "
+    echo -e " (${CYAN}2${RESET}). Directory Fuzzing (${GREEN}FFuf${RESET}) - (${CYAN}Directory Fuzzing & Enumeration${RESET})                       "
+    echo -e " (${CYAN}3${RESET}). Network Mapping (${GREEN}Nmap${RESET}) - (${CYAN}Network Mapping Tool${RESET})                                    "
+    echo -e " (${CYAN}4${RESET}). XSS Scan (${GREEN}XSStrike${RESET}) - (${CYAN}Cross Site Scripting vulnerability Scanner${RESET})                 "
+    echo -e " (${CYAN}5${RESET}). SQLi Scan (${GREEN}Sqlmap${RESET}) - (${CYAN}SQL Injection Vulnerability Scanner${RESET})                         "
+    echo -e " (${CYAN}6${RESET}). Wordpress Enumeration Scan (${GREEN}WPenum${RESET}) - (${CYAN}Wordpress Users Enumerator${RESET})                 "
+    echo -e " (${CYAN}7${RESET}). Admin-Panel Scan - (${GREEN}Admin Panel Finder${RESET}) - (${CYAN}Find Admin Panel Of Web Servers${RESET})        "
+    echo -e " (${CYAN}8${RESET}). SSH & FTP Server Brute-Forcing (${GREEN}SSHash${RESET}) - (${CYAN}SSH/FTP Brute Forcing Tool${RESET})             "
+    echo -e " (${CYAN}9${RESET}). HTTP Parameter Scan 1 (${GREEN}Paramspider${RESET}) - (${CYAN}Http Parameter Scanner${RESET})                     "
+    echo -e " (${CYAN}10${RESET}). HTTP Parameter Scan 2 (${GREEN}Arjun${RESET}) - (${CYAN}Http Parameter Scanner${RESET})                          "
+    echo -e " (${CYAN}11${RESET}). Origin IP Finder (${GREEN}IPF${RESET}) - (${CYAN}IPF - Original Server IP Finder${RESET})                        "
+    echo -e " (${CYAN}12${RESET}). IP Address Location Tracking (${GREEN}Loctrac${RESET}) - (${CYAN}IP Address Location Tracker${RESET})            "
+    echo -e " (${CYAN}13${RESET}). Google Results Scraper - (${GREEN}GRS${RESET}) - (${CYAN}Google search results links serper/scraper${RESET})     "
+    echo -e " (${CYAN}14${RESET}). DDoS Attack - (${GREEN}DDoSer${RESET}) - (${CYAN}Simple DDoS Tool Written In Bash${RESET})                       "
+    echo -e " (${CYAN}15${RESET}). Web Screenshot - (${GREEN}Sshot${RESET}) - (${CYAN}Unlimited Web Screenshot Tool${RESET})                        "
+    echo -e " (${CYAN}16${RESET}). Password Leak Searcher - (${GREEN}PWDEXT${RESET}) - (${CYAN}Plaintext Password Leakage Searcher${RESET})         "
+    echo -e " (${CYAN}18${RESET}). XST Vulnerability Scan - (${GREEN}Crosstracer${RESET}) - (${CYAN}Bash Written XST Vulnerability Scanner${RESET}) "
+    echo -e " (${CYAN}17${RESET}). CORS Vulnerability Scan - (${GREEN}Corsica${RESET}) - (${CYAN}Bash Written CORS Vulnerability Scanner${RESET})   "
+    echo -e " (${CYAN}19${RESET}). Fast HTTP Scan - (${GREEN}HTTPX${RESET}) - (${CYAN}Fast HTTP Toolkit Written In GO${RESET})                      "
+    echo -e " (${CYAN}A${RESET}). About (${CYAN}About Section${RESET})                                                                              "
+    echo -e " (${CYAN}O${RESET}). Others (${CYAN}Other Tools${RESET})                                                                               "
+    echo -e " (${CYAN}Q${RESET}). QUIT (${CYAN}Quit the software${RESET})                                                                           "
     echo
 }
 
-# Function to pause and wait for user input
+# Function to pause the script and wait for user input.
 pause() {
     read -rp "Press Enter To Return To Menu..." temp
 }
 
-#!/bin/bash
-
-# Other Tools Menu Function
+# Other tools main menu function
 other_tools_menu() {
     while true; do
         clear_screen
@@ -160,7 +163,7 @@ other_tools_menu() {
 }
 
 
-# Main function
+# Main function of the script
 main() {
 
     while true; do
