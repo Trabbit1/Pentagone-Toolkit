@@ -49,16 +49,18 @@ APT_TOOLS=(
 # FUNCTIONS
 
 Banner() {
-    echo " _______ _______ _______ ___ ___ _______ ";
-    echo "|   _   |   _   |       |   Y   |   _   |";
-    echo "|   1___|.  1___|.|   | |.  |   |.  1   |";
-    echo "|____   |.  __)_'-|.  |-|.  |   |.  ____|";
-    echo "|:  1   |:  1   | |:  | |:  1   |:  |    ";
-    echo "|::.. . |::.. . | |::.| |::.. . |::.|    ";
-    echo "'-------'-------' '---' '-------'---'    ";
-    echo "  Pentagone Toolkit Setup - @Trabbit0ne  ";
-    echo "   -----------------------------------   ";
-    echo
+cat << EOF
+     _______ _______ _______ ___ ___ _______
+    |   _   |   _   |       |   Y   |   _   |
+    |   1___|.  1___|.|   | |.  |   |.  1   |
+    |____   |.  __)_'-|.  |-|.  |   |.  ____|
+    |: 1   |:  1   | |:  | |:  1   |:  |
+    |::.. . |::.. . | |::.| |::.. . |::.|
+    '-------'-------' '---' '-------'---'
+      Pentagone Toolkit Setup - @Trabbit0ne
+       -----------------------------------
+
+EOF
 }
 
 # Clone GitHub repositories
@@ -109,11 +111,15 @@ main() {
     install_tools
     python3 paramspider/setup.py install
 
+    # Install GO Packages
+
     # Download and set up subfinder
-    wget "https://github.com/projectdiscovery/subfinder/releases/download/v2.6.7/subfinder_2.6.7_linux_amd64.zip"
-    unzip subfinder_2.6.7_linux_amd64.zip
-    cp subfinder "$(dirname "$(command -v bash)")/subfinder" || { echo "Failed to move subfinder"; exit 1; }
-    chmod +x "$(dirname "$(command -v bash)")/subfinder" || { echo "Failed to set executable permission on subfinder"; exit 1; }
+    go install -v github.com/projectdiscovery/subfinder/v2/cmd/subfinder@latest
+    echo export PATH=$PATH:$HOME/go/bin >> $home/.bashrc
+    source $home/.bashrc
+
+    # Download and set up Katana
+    CGO_ENABLED=1 go install github.com/projectdiscovery/katana/cmd/katana@latest
 }
 
 # EXECUTE
