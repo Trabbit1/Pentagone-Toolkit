@@ -7,7 +7,7 @@
 
 # ---------------------------------------------------------------------------
 # Youtube:        TrabbitOne
-# BuyMeACoffee:   trabbit0ne
+# Ko-Fi:          Trabbit
 # Bitcoin:        bc1qehnsx5tdwkulamttzla96dmv82ty9ak8l5yy40
 # ---------------------------------------------------------------------------
 
