@@ -167,8 +167,7 @@ other_tools_menu() {
 main() {
 
     while true; do
-        prompt="${BLUE}╭─[${GREEN} V${version} ${BLUE}] ─ (${RED} Select A Tool ${BLUE})
-╰─${YELLOW}# ${RESET}"
+        prompt="${BLUE}╭─[${GREEN} V${version} ${BLUE}] ─ (${RED} Select A Tool ${BLUE})\n╰─${YELLOW}# ${RESET}"
 
         display_menu
         echo -ne "$prompt"
