@@ -20,10 +20,16 @@ Multi-Usage Pentesting Toolkit Written In Bash.
 
 ## Installation
 
-<img src="https://github.com/Trabbit1/Pentagone-Toolkit/blob/main/medias/preview.gif">
+```
+git clone https://github.com/Trabbit0ne/Pentagone-Toolkit.git
+```
 
-```bash
-git clone https://github.com/Trabbit0ne/Pentagone-Toolkit.git && cd Pentagone-Toolkit && chmod +x * && ./setup.sh
+```
+cd Pentagone-Toolkit && chmod +x *
+```
+
+```
+./setup.sh
 ```
 
 Then
