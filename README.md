@@ -1,4 +1,4 @@
-# Pentagone-Toolkit
+# Pentagone Toolkit
 
 Multi-Usage Pentesting Toolkit Written In Bash.
 
@@ -9,25 +9,14 @@ Multi-Usage Pentesting Toolkit Written In Bash.
 
 ## Tools
 
-* Subfinder,
-* Ffuf,
-* Nmap,
-* XSStrike,
-* SQLmap,
-* WPenum,
-* Admin Panel Finder,
-* SSHash,
-* Paramspider,
-* Arjun,
-* IPF
-* Loctrac,
-* GRS,
-* DDoSer,
-* Sshot,
-* Corsica
-* Crosstracer,
-  
-  Others
+| Category  | Tools |
+|-----------|----------------------------------------|
+| Scanning & Enumeration | Subfinder, Ffuf, Nmap, WPenum |
+| Security Testing | XSStrike, SQLmap, Admin Panel Finder |
+| Hash & Data Analysis | SSHash, Paramspider, Arjun, IPF |
+| Tracking & Geolocation | Loctrac, GRS |
+| Attack & Defense | DDoSer, Sshot, Corsica, Crosstracer |
+| Miscellaneous | Others |
 
 ## Installation
 
